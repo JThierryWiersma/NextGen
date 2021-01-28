@@ -1,0 +1,14 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
+  <PropertyGroup>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <PublishUrlHistory>d:\users\wiersmth\Desktop\Visual Studio 2005\Publish\|C:\Documents and Settings\Eigenaar\Mijn documenten\Visual Studio 2005\Publish\</PublishUrlHistory>
+    <InstallUrlHistory>http://dfz-vm51/NextGen/NextGen.application/</InstallUrlHistory>
+    <SupportUrlHistory>http://www.codemultiplier.com</SupportUrlHistory>
+    <UpdateUrlHistory>
+    </UpdateUrlHistory>
+    <BootstrapperUrlHistory>
+    </BootstrapperUrlHistory>
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+</Project>

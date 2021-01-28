@@ -1,0 +1,269 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{53651B0F-F3BB-433B-84C9-F07C22640B04}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Generator</RootNamespace>
+    <AssemblyName>NextGen</AssemblyName>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <TargetZone>LocalIntranet</TargetZone>
+    <PublishUrl>d:\users\wiersmth\Desktop\Visual Studio 2005\Publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <SupportUrl>http://www.codemultiplier.com</SupportUrl>
+    <ProductName>NextGen</ProductName>
+    <PublisherName>CodeMultiplier.com</PublisherName>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationVersion>2.2.0.%2a</ApplicationVersion>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CodeProcessors\SyntaxChecker.cs" />
+    <Compile Include="Exceptions\BreakShouldBeInLoopException.cs" />
+    <Compile Include="Exceptions\DoExpressionExpectedException.cs" />
+    <Compile Include="Exceptions\DuplicateFunctionDefinitionException.cs" />
+    <Compile Include="Exceptions\ElseIfNotMatchedException.cs" />
+    <Compile Include="Exceptions\ElseNotMatchedException.cs" />
+    <Compile Include="Exceptions\EmptyValueNotSuitableForOperationException.cs" />
+    <Compile Include="Exceptions\EndFunctionNotMatchedException.cs" />
+    <Compile Include="Exceptions\EndIfMissingException.cs" />
+    <Compile Include="Exceptions\IdentifierExpectedException.cs" />
+    <Compile Include="Exceptions\IncludeFileLoopException.cs" />
+    <Compile Include="Exceptions\IncludeFileNotFoundException.cs" />
+    <Compile Include="Exceptions\IncludeFilesCanOnlyContainFunctionsException.cs" />
+    <Compile Include="Exceptions\IncludeFileShouldBeTopLevelException.cs" />
+    <Compile Include="Exceptions\LoopNotMatchedException.cs" />
+    <Compile Include="Exceptions\LoopStatementMissingException.cs" />
+    <Compile Include="Exceptions\OperationNotDefinedException.cs" />
+    <Compile Include="Exceptions\ParenthesisCloseExpectedException.cs" />
+    <Compile Include="Exceptions\ConditionResultException.cs" />
+    <Compile Include="Exceptions\EndFunctionMissingException.cs" />
+    <Compile Include="Exceptions\EndIfNotMatchedException.cs" />
+    <Compile Include="Exceptions\FieldNotFoundException.cs" />
+    <Compile Include="Exceptions\FunctionDeclarationException.cs" />
+    <Compile Include="Exceptions\FunctionParameterListFormatException.cs" />
+    <Compile Include="Exceptions\FunctionParameterTypeMismatch.cs" />
+    <Compile Include="Exceptions\IfMissingConditionException.cs" />
+    <Compile Include="Exceptions\ParenthesisOpenExpectedException.cs" />
+    <Compile Include="Exceptions\OperandExpectedException.cs" />
+    <Compile Include="Exceptions\OperatorExpectedException.cs" />
+    <Compile Include="Exceptions\ReturnExpressionUnexpectedException.cs" />
+    <Compile Include="Exceptions\ReturnMissingExpressionException.cs" />
+    <Compile Include="Exceptions\ReturnNotInFunctionUnexpectedException.cs" />
+    <Compile Include="Exceptions\ReturnUnexpectedTypeException.cs" />
+    <Compile Include="Exceptions\ReturnValueMissingException.cs" />
+    <Compile Include="Exceptions\TypenameExpectedException.cs" />
+    <Compile Include="Exceptions\UnexpectedInputException.cs" />
+    <Compile Include="Exceptions\UnreachableCodeException.cs" />
+    <Compile Include="Exceptions\WhileExpressionExpectedException.cs" />
+    <Compile Include="FindReplaceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindReplaceDialog.Designer.cs">
+      <DependentUpon>FindReplaceDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Statements\SourceCodeContext.cs" />
+    <Compile Include="Exceptions\StringCasingException.cs" />
+    <Compile Include="Exceptions\StringTerminatorExpectedException.cs" />
+    <Compile Include="Exceptions\SyntaxErrorException.cs" />
+    <Compile Include="Exceptions\TooManyErrorsException.cs" />
+    <Compile Include="Exceptions\TooManyFunctionParametersException.cs" />
+    <Compile Include="Exceptions\UnknownCommandException.cs" />
+    <Compile Include="Exceptions\UnknownTokenException.cs" />
+    <Compile Include="Exceptions\VariableDeclarationException.cs" />
+    <Compile Include="Expressions\BooleanVar.cs" />
+    <Compile Include="Expressions\ConceptVar.cs" />
+    <Compile Include="Expressions\DecimalVar.cs" />
+    <Compile Include="Expressions\ExpressionEvaluator.cs" />
+    <Compile Include="Expressions\ExpressionProcessorV2.cs" />
+    <Compile Include="Expressions\FunctionInfo.cs" />
+    <Compile Include="Expressions\IExternalTokenResolver.cs" />
+    <Compile Include="Expressions\OperatorInfo.cs" />
+    <Compile Include="Expressions\StringVar.cs" />
+    <Compile Include="Expressions\Var.cs" />
+    <Compile Include="Expressions\VoidVar.cs" />
+    <Compile Include="GenerateOutput.cs" />
+    <Compile Include="LineProcessor.cs" />
+    <Compile Include="NewOpenProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewOpenProject.Designer.cs">
+      <DependentUpon>NewOpenProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Patterns\ICodeLineVisitor.cs" />
+    <Compile Include="Patterns\IObserver.cs" />
+    <Compile Include="Patterns\ISubject.cs" />
+    <Compile Include="Options.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Options.Designer.cs">
+      <DependentUpon>Options.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="CodeProcessors\CodeFormatter.cs" />
+    <Compile Include="Statements\CodeLine.cs" />
+    <Compile Include="CodeProcessors\CodePrinter.cs" />
+    <Compile Include="CodeProcessors\CodeProcessor.cs" />
+    <Compile Include="Statements\LoopStatement.cs" />
+    <Compile Include="Statements\IfStatement.cs" />
+    <Compile Include="Statements\Other.cs" />
+    <Compile Include="CodeProcessors\Parser.cs" />
+    <Compile Include="Statements\Statement.cs" />
+    <Compile Include="TemplateFileEditorV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TemplateFileEditorV2.Designer.cs">
+      <DependentUpon>TemplateFileEditorV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TemplatePanel2.cs" />
+    <Compile Include="Utility\Log.cs" />
+    <Compile Include="TemplateFileEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TemplateFileEditor.Designer.cs">
+      <DependentUpon>TemplateFileEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TemplateGenerator.cs" />
+    <Compile Include="TemplateMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TemplatePanel.cs" />
+    <Compile Include="Utility\AppStarter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FindReplaceDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FindReplaceDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewOpenProject.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>NewOpenProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Options.resx">
+      <DependentUpon>Options.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TemplateFileEditor.resx">
+      <DependentUpon>TemplateFileEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TemplateFileEditorV2.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TemplateFileEditorV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TemplateForm.resx">
+      <DependentUpon>TemplateForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TemplateMain.resx">
+      <DependentUpon>TemplateMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Utility\OptionsSettings.cs" />
+    <Compile Include="Utility\Registry.cs" />
+    <Compile Include="Utility\TemplateCache.cs" />
+    <Compile Include="Utility\TemplateUtil.cs" />
+    <Compile Include="Welcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Welcome.designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DSLDESIGN.txt" />
+    <BaseApplicationManifest Include="Properties\app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ea2Nextgen.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

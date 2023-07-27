@@ -55,7 +55,7 @@ namespace Generator
             m_filename                              = m_currenttype.Attributes["sourcefile"].Value;
             m_displayedtype                         = type;
 
-            Text                                    = "Templatefile: " + name;
+            Text                                    = "Template: " + name;
             txtText.Lines                           = new String[0];
 
             XmlNode             templatefilenamenode= m_currenttype.SelectSingleNode("templatefilename");
@@ -82,7 +82,7 @@ namespace Generator
 
             Text                                    = "Library: " + name;
             txtText.Lines                           = new String[0];
-            m_templatefilename                      = TemplateCache.Instance().SolutionLocation + "\\TemplateFile\\" + name;
+            m_templatefilename                      = TemplateCache.Instance().SolutionLocation + "\\Template\\" + name;
 
             FinishLoading();
         }
@@ -328,7 +328,7 @@ namespace Generator
                         continue;
                     }
                     // Probeer of het een 'concept' variabele is.
-                    tnode = el.SelectSingleNode("concept");
+                    tnode = el.SelectSingleNode("Concept");
                     if (tnode != null && tnode.InnerText != "")
                     {
                         vartype                     = tnode.InnerText;
@@ -338,17 +338,17 @@ namespace Generator
 
                         continue;
                     }
-                    // Probeer of het een 'userconcept' variabele is.
-                    tnode = el.SelectSingleNode("userconcept");
-                    if (tnode != null && tnode.InnerText != "")
-                    {
-                        vartype = tnode.InnerText;
-                        kv = new KnownVariable(varname, vartype, line, VariableSource.Concept, typename);
-                        globalvars.Add(kv);
-                        actualvars.Add(kv);
+                    //// Probeer of het een 'userconcept' variabele is.
+                    //tnode = el.SelectSingleNode("userconcept");
+                    //if (tnode != null && tnode.InnerText != "")
+                    //{
+                    //    vartype = tnode.InnerText;
+                    //    kv = new KnownVariable(varname, vartype, line, VariableSource.Concept, typename);
+                    //    globalvars.Add(kv);
+                    //    actualvars.Add(kv);
 
-                        continue;
-                    }
+                    //    continue;
+                    //}
                 }
                 catch (Exception e)
                 {

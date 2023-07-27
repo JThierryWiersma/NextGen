@@ -241,13 +241,19 @@ namespace Generator
                 solution_file = Generator.Utility.TemplateUtil.Instance().CombineAndCompact(file, solution_file);
                 d.Load(solution_file);
                 XmlNode sourceproject = d.SelectSingleNode("solution/sourceproject");
-                if (sourceproject == null)
+                if (sourceproject != null)
                 {
+                    file = sourceproject.InnerText;
+                    file = Generator.Utility.TemplateUtil.Instance().CombineAndCompact(solution_file, file);
+                }
+                else 
+                {
+                    // Probeer of de projectfile in dezelfde folder staat als de solution
+                    // slecht idee  file = solution_file.Replace(".xms", ".xmp");
+                                    
                     throw new ApplicationException("Could not find sourceproject for solution '" + solution + "'");
                 }
 
-                file = sourceproject.InnerText;
-                file = Generator.Utility.TemplateUtil.Instance().CombineAndCompact(solution_file, file);
 
                 TemplateCache.Instance().Clear(true);
                 TemplateMain.Instance().InitializeApplication(new string[] { file });

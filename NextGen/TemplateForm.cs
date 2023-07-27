@@ -1436,6 +1436,9 @@ namespace Generator
             }
         }
 
+		/// <summary>
+		/// Verwerk de edits in het huidige onderhanden item, en lever dit op als XML Document
+		/// </summary>
         public XmlDocument GetCleanDocument()
         {
             // Read de handel
@@ -1555,6 +1558,10 @@ namespace Generator
 			pnlSets.Width							= setsVScrollSets.Left;
 		}
 
+		/// <summary>
+		/// Genereer de boel voor de huidige instance, met de eventuele onderdelen die
+		/// aangekozen zijn in de lijst met onderliggende zaken
+		/// </summary>
 		private void btnGenerate_Click(object sender, System.EventArgs e)
 		{
 			try
@@ -1571,20 +1578,23 @@ namespace Generator
 				// First add all items to do to a list, then do them and present progress...
                 List<GenerationRequest> todo        = new List<GenerationRequest>();
 
+				// Process all possible files that can be used to generate
 				foreach (XmlNode templatefiletype in TemplateCache.Instance().GetTypesList("__TemplateFile"))
 				{
+					// Get the group of templatefiles this file belongs to. If none, skip.
 					XmlNode				ttype		= templatefiletype.SelectSingleNode("type/group");
 					if (ttype == null)
 						continue;
 
-					// Check if the group is checked on the panel
+					// Check if the group fo this file is checked on the panel, if not, skip it.
 					if (currentinstance.SelectSingleNode("generate/generate[group='" + ttype.InnerText + "' and generate='1']") == null)
 						continue;
 					
                     string              templatefile_applies_to
                                                     = templatefiletype.SelectSingleNode("type/appliesto").InnerText;
 
-					if (currentinstancetypename == templatefile_applies_to)
+					// If the current type (Concept) is the type to which this templatefile is applicable, do it!
+					if (currentinstancetypename.Equals(templatefile_applies_to, StringComparison.CurrentCultureIgnoreCase))
 					{
 						todo.Add(new GenerationRequest(
 							m_type_definition, 
@@ -1594,17 +1604,18 @@ namespace Generator
 							);
 						
 					}
+					// Check all underlaying checked items, if it is of a type to which the templatefile is applicable 
 					foreach (GeneratorComboItem item in lstGenTableDefinitions.CheckedItems)
 					{
-						if (item.GetTypename() != templatefile_applies_to)
-							continue;
-
-						todo.Add(new GenerationRequest(
-							item.m_type.FirstChild, 
-							item.GetInstance(),
-							templatefiletype.FirstChild, 
-							item.ToString())
-							);
+						if (templatefile_applies_to.Equals(item.GetTypename(), StringComparison.CurrentCultureIgnoreCase))
+						{
+							todo.Add(new GenerationRequest(
+								item.m_type.FirstChild,
+								item.GetInstance(),
+								templatefiletype.FirstChild,
+								item.ToString())
+								);
+						}
 					}
 					
 				}

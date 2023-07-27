@@ -173,7 +173,7 @@ namespace Generator
 				InitializeKeepInfo();
 				m_source							= LoadTemplateSource();
 				m_target							= new StringCollection();
-                m_log.Write(0, InterpretationStatus.Active, "Templatefile: " + m_inputfilename);
+                m_log.Write(0, InterpretationStatus.Active, "Template: " + m_inputfilename);
                 m_log.Write(0, InterpretationStatus.Active, "Outputfile: " + m_outputfilename);
 
                 LineProcessor lp = new LineProcessor(m_current, new Hashtable(), new Hashtable(), m_source, m_target, m_log, m_KeepInfo, m_FunctionInfo, GetCurrentTemplatename(), null);
@@ -266,7 +266,7 @@ namespace Generator
 
 			m_outputfilename						+= filename;
 
-			m_inputfilename							= TemplateCache.Instance().SolutionLocation + @"\TemplateFile\" + m_templateDefinition.SelectSingleNode("templatefilename").InnerText;
+			m_inputfilename							= TemplateCache.Instance().SolutionLocation + @"\Template\" + m_templateDefinition.SelectSingleNode("templatefilename").InnerText;
         }
 
 		private StringCollection LoadTemplateSource()

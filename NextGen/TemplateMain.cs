@@ -455,7 +455,7 @@ namespace Generator
             this.tabConcepts.Padding = new System.Windows.Forms.Padding(3);
             this.tabConcepts.Size = new System.Drawing.Size(266, 325);
             this.tabConcepts.TabIndex = 0;
-            this.tabConcepts.Text = "Concepts";
+            this.tabConcepts.Text = "Core Concepts";
             this.tabConcepts.UseVisualStyleBackColor = true;
             // 
             // lstConceptList
@@ -1037,7 +1037,7 @@ namespace Generator
 			//System.Diagnostics.Debug.Assert(type.ParentNode.Name == "n", "Zou element n als parent verwachten....");
 			string						typename	= type.Attributes["definition"].Value;
 
-			if (typename != "TemplateFile" && oldname != newname)
+			if (typename != "Template" && oldname != newname)
 			{
 				// Update the nodes.
 				TreeNode				typenode	= null;
@@ -1144,7 +1144,7 @@ namespace Generator
             string solution = TemplateCache.Instance().SolutionLocation;
             if (project == "" && TemplateCache.Instance().TemplatefilesEditable)
             {
-                project = "Templates and concepts";
+                project = "Templates and Core concepts";
             }
             toolStripProject.Text = "Project: " + System.IO.Path.GetFileNameWithoutExtension(project);
             toolStripProject.ToolTipText = project;

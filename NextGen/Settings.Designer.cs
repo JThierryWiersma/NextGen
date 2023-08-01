@@ -1,6 +1,6 @@
 namespace Generator
 {
-    partial class Options
+    partial class Settings
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,16 @@ namespace Generator
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Options));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.tabOptions = new System.Windows.Forms.TabControl();
+            this.tabLocations = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.dataGridLocations = new System.Windows.Forms.DataGridView();
+            this.Project = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabEditor = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -64,6 +72,10 @@ namespace Generator
             this.btnOK = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tabOptions.SuspendLayout();
+            this.tabLocations.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridLocations)).BeginInit();
+            this.panel1.SuspendLayout();
             this.tabEditor.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtGeneratedTabstops)).BeginInit();
@@ -73,16 +85,90 @@ namespace Generator
             // 
             // tabOptions
             // 
-            this.tabOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabOptions.Controls.Add(this.tabLocations);
             this.tabOptions.Controls.Add(this.tabEditor);
             this.tabOptions.Location = new System.Drawing.Point(12, 8);
             this.tabOptions.Multiline = true;
             this.tabOptions.Name = "tabOptions";
             this.tabOptions.SelectedIndex = 0;
-            this.tabOptions.Size = new System.Drawing.Size(369, 304);
+            this.tabOptions.Size = new System.Drawing.Size(517, 383);
             this.tabOptions.TabIndex = 0;
+            // 
+            // tabLocations
+            // 
+            this.tabLocations.Controls.Add(this.flowLayoutPanel1);
+            this.tabLocations.Location = new System.Drawing.Point(4, 22);
+            this.tabLocations.Name = "tabLocations";
+            this.tabLocations.Size = new System.Drawing.Size(509, 357);
+            this.tabLocations.TabIndex = 1;
+            this.tabLocations.Text = "Code generation locations";
+            this.tabLocations.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.dataGridLocations);
+            this.flowLayoutPanel1.Controls.Add(this.panel1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(41, 17);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(490, 294);
+            this.flowLayoutPanel1.TabIndex = 2;
+            // 
+            // dataGridLocations
+            // 
+            this.dataGridLocations.AllowUserToAddRows = false;
+            this.dataGridLocations.AllowUserToDeleteRows = false;
+            this.dataGridLocations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridLocations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Project,
+            this.Location});
+            this.dataGridLocations.Location = new System.Drawing.Point(3, 3);
+            this.dataGridLocations.Name = "dataGridLocations";
+            this.dataGridLocations.ReadOnly = true;
+            this.dataGridLocations.Size = new System.Drawing.Size(465, 150);
+            this.dataGridLocations.TabIndex = 2;
+            // 
+            // Project
+            // 
+            this.Project.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Project.FillWeight = 1F;
+            this.Project.HeaderText = "Project";
+            this.Project.Name = "Project";
+            this.Project.ReadOnly = true;
+            // 
+            // Location
+            // 
+            this.Location.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Location.HeaderText = "Location";
+            this.Location.Name = "Location";
+            this.Location.ReadOnly = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Location = new System.Drawing.Point(3, 159);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(318, 65);
+            this.panel1.TabIndex = 0;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(87, 30);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(113, 20);
+            this.textBox1.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(17, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(41, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "label11";
             // 
             // tabEditor
             // 
@@ -91,7 +177,7 @@ namespace Generator
             this.tabEditor.Location = new System.Drawing.Point(4, 22);
             this.tabEditor.Name = "tabEditor";
             this.tabEditor.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEditor.Size = new System.Drawing.Size(361, 278);
+            this.tabEditor.Size = new System.Drawing.Size(509, 357);
             this.tabEditor.TabIndex = 0;
             this.tabEditor.Text = "Template editing";
             this.tabEditor.UseVisualStyleBackColor = true;
@@ -421,7 +507,7 @@ namespace Generator
             // btnApply
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApply.Location = new System.Drawing.Point(292, 322);
+            this.btnApply.Location = new System.Drawing.Point(440, 401);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(89, 27);
             this.btnApply.TabIndex = 6;
@@ -433,7 +519,7 @@ namespace Generator
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(197, 322);
+            this.btnCancel.Location = new System.Drawing.Point(345, 401);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 27);
             this.btnCancel.TabIndex = 5;
@@ -444,7 +530,7 @@ namespace Generator
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(102, 322);
+            this.btnOK.Location = new System.Drawing.Point(250, 401);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(89, 27);
             this.btnOK.TabIndex = 4;
@@ -457,20 +543,25 @@ namespace Generator
             this.colorDialog1.AllowFullOpen = false;
             this.colorDialog1.SolidColorOnly = true;
             // 
-            // Options
+            // Settings
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(393, 361);
+            this.ClientSize = new System.Drawing.Size(541, 440);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.tabOptions);
-            this.Name = "Options";
-            this.Text = "Options";
+            this.Name = "Settings";
+            this.Text = "Settings";
             this.tabOptions.ResumeLayout(false);
+            this.tabLocations.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridLocations)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tabEditor.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -517,5 +608,13 @@ namespace Generator
         private System.Windows.Forms.Button btnErrorColor;
         private System.Windows.Forms.TextBox txtError;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TabPage tabLocations;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.DataGridView dataGridLocations;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Project;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Location;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label11;
     }
 }

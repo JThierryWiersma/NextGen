@@ -16,7 +16,6 @@ D:\NextGen\Software\nieuwe\NextGenSolution\NextGen\bin\Debug\NextGen.exe.config
 D:\NextGen\Software\nieuwe\NextGenSolution\NextGen\bin\Debug\NextGen.exe
 D:\NextGen\Software\nieuwe\NextGenSolution\NextGen\bin\Debug\NextGen.pdb
 D:\NextGen\Software\nieuwe\NextGenSolution\NextGen\obj\Debug\NextGen.csproj.CoreCompileInputs.cache
-C:\Users\WIERSMAT\Source\Repos\JThierryWiersma\NextGen\NextGen\bin\Debug\Ea2Nextgen.xslt
 C:\Users\WIERSMAT\Source\Repos\JThierryWiersma\NextGen\NextGen\bin\Debug\NextGen.exe.config
 C:\Users\WIERSMAT\Source\Repos\JThierryWiersma\NextGen\NextGen\bin\Debug\NextGen.exe
 C:\Users\WIERSMAT\Source\Repos\JThierryWiersma\NextGen\NextGen\bin\Debug\NextGen.pdb

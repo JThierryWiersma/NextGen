@@ -1,0 +1,17 @@
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\obj\x86\Debug\NextGen6.csproj.AssemblyReference.cache
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\obj\x86\Debug\Generator.FindReplaceDialog.resources
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\obj\x86\Debug\Generator.NewOpenProject.resources
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\obj\x86\Debug\Generator.Options.resources
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\obj\x86\Debug\NextGen6.NextGen.Properties.Resources.resources
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\obj\x86\Debug\Generator.TemplateFileEditor.resources
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\obj\x86\Debug\Generator.TemplateFileEditorV2.resources
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\obj\x86\Debug\Generator.TemplateForm.resources
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\obj\x86\Debug\Generator.TemplateMain.resources
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\obj\x86\Debug\Generator.Welcome.resources
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\obj\x86\Debug\NextGen6.csproj.GenerateResource.cache
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\obj\x86\Debug\NextGen6.csproj.CoreCompileInputs.cache
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\bin\Debug\WindowsApplication.exe.config
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\bin\Debug\WindowsApplication.exe
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\bin\Debug\WindowsApplication.pdb
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\obj\x86\Debug\WindowsApplication.exe
+C:\Users\WIERSMAT\source\repos\JThierryWiersma\NextGen\obj\x86\Debug\WindowsApplication.pdb

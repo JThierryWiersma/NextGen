@@ -73,6 +73,21 @@ namespace Generator
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateMain));
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Node2");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Node3");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("xxxx");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Concepts", new System.Windows.Forms.TreeNode[] {
+            treeNode17,
+            treeNode18,
+            treeNode19});
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Node6");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Node7");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Node8");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Node5ffffff", new System.Windows.Forms.TreeNode[] {
+            treeNode21,
+            treeNode22,
+            treeNode23});
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node2");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node3");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("xxxx");
@@ -87,21 +102,6 @@ namespace Generator
             treeNode5,
             treeNode6,
             treeNode7});
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateMain));
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Node2");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Node3");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("xxxx");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Concepts", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10,
-            treeNode11});
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Node6");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Node7");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Node8");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Node5ffffff", new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14,
-            treeNode15});
             this.mnuMain = new System.Windows.Forms.MainMenu(this.components);
             this.mnuFile = new System.Windows.Forms.MenuItem();
             this.mnuNewProject = new System.Windows.Forms.MenuItem();
@@ -113,10 +113,6 @@ namespace Generator
             this.mnuCopy = new System.Windows.Forms.MenuItem();
             this.mnuDelete = new System.Windows.Forms.MenuItem();
             this.menuItem8 = new System.Windows.Forms.MenuItem();
-            this.mnuAddNew = new System.Windows.Forms.MenuItem();
-            this.menuItem9 = new System.Windows.Forms.MenuItem();
-            this.mnuSolution = new System.Windows.Forms.MenuItem();
-            this.mnuImport = new System.Windows.Forms.MenuItem();
             this.menuItem13 = new System.Windows.Forms.MenuItem();
             this.mnuExit = new System.Windows.Forms.MenuItem();
             this.mnuView = new System.Windows.Forms.MenuItem();
@@ -139,11 +135,13 @@ namespace Generator
             this.importFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabWindow = new System.Windows.Forms.TabControl();
-            this.tabConcepts = new System.Windows.Forms.TabPage();
-            this.lstConceptList = new System.Windows.Forms.TreeView();
+            this.tabUserConcepts = new System.Windows.Forms.TabPage();
+            this.tabCoreConcepts = new System.Windows.Forms.TabPage();
+            this.lstCoreConceptList = new System.Windows.Forms.TreeView();
             this.conceptfolder = new System.Windows.Forms.ImageList(this.components);
             this.tabTemplates = new System.Windows.Forms.TabPage();
             this.lstTemplateList = new System.Windows.Forms.TreeView();
+            this.lstUserConceptList = new System.Windows.Forms.TreeView();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -155,9 +153,8 @@ namespace Generator
             this.toolStripProject = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1.SuspendLayout();
             this.tabWindow.SuspendLayout();
-            this.tabConcepts.SuspendLayout();
+            this.tabCoreConcepts.SuspendLayout();
             this.tabTemplates.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnuMain
@@ -180,10 +177,6 @@ namespace Generator
             this.mnuCopy,
             this.mnuDelete,
             this.menuItem8,
-            this.mnuAddNew,
-            this.menuItem9,
-            this.mnuSolution,
-            this.mnuImport,
             this.menuItem13,
             this.mnuExit});
             this.mnuFile.Text = "&File";
@@ -243,36 +236,14 @@ namespace Generator
             this.menuItem8.Text = "-";
             this.menuItem8.Visible = false;
             // 
-            // mnuAddNew
-            // 
-            this.mnuAddNew.Index = 8;
-            this.mnuAddNew.Text = "&Add\tnew";
-            // 
-            // menuItem9
-            // 
-            this.menuItem9.Index = 9;
-            this.menuItem9.Text = "-";
-            this.menuItem9.Visible = false;
-            // 
-            // mnuSolution
-            // 
-            this.mnuSolution.Index = 10;
-            this.mnuSolution.Text = "&Solution";
-            // 
-            // mnuImport
-            // 
-            this.mnuImport.Index = 11;
-            this.mnuImport.Text = "Import...";
-            this.mnuImport.Click += new System.EventHandler(this.mnuImport_Click);
-            // 
             // menuItem13
             // 
-            this.menuItem13.Index = 12;
+            this.menuItem13.Index = 8;
             this.menuItem13.Text = "-";
             // 
             // mnuExit
             // 
-            this.mnuExit.Index = 13;
+            this.mnuExit.Index = 9;
             this.mnuExit.Text = "E&xit";
             this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
             // 
@@ -400,20 +371,20 @@ namespace Generator
             this.txtOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtOutput.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtOutput.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtOutput.Location = new System.Drawing.Point(0, 359);
+            this.txtOutput.Location = new System.Drawing.Point(0, 361);
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.Size = new System.Drawing.Size(985, 192);
             this.txtOutput.TabIndex = 4;
             this.txtOutput.Text = "";
             this.txtOutput.WordWrap = false;
             this.txtOutput.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtOutput_MouseClick);
-            this.txtOutput.MouseMove += new System.Windows.Forms.MouseEventHandler(this.txtOutput_MouseMove);
             this.txtOutput.TextChanged += new System.EventHandler(this.txtOutput_TextChanged);
+            this.txtOutput.MouseMove += new System.Windows.Forms.MouseEventHandler(this.txtOutput_MouseMove);
             // 
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitter1.Location = new System.Drawing.Point(0, 356);
+            this.splitter1.Location = new System.Drawing.Point(0, 358);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(985, 3);
             this.splitter1.TabIndex = 5;
@@ -431,69 +402,63 @@ namespace Generator
             this.panel1.Location = new System.Drawing.Point(707, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(2);
-            this.panel1.Size = new System.Drawing.Size(278, 356);
+            this.panel1.Size = new System.Drawing.Size(278, 358);
             this.panel1.TabIndex = 17;
             // 
             // tabWindow
             // 
-            this.tabWindow.Controls.Add(this.tabConcepts);
+            this.tabWindow.Controls.Add(this.tabUserConcepts);
+            this.tabWindow.Controls.Add(this.tabCoreConcepts);
             this.tabWindow.Controls.Add(this.tabTemplates);
             this.tabWindow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabWindow.ImageList = this.conceptfolder;
             this.tabWindow.Location = new System.Drawing.Point(2, 2);
             this.tabWindow.Name = "tabWindow";
             this.tabWindow.SelectedIndex = 0;
-            this.tabWindow.Size = new System.Drawing.Size(274, 352);
+            this.tabWindow.Size = new System.Drawing.Size(274, 354);
             this.tabWindow.TabIndex = 17;
             // 
-            // tabConcepts
+            // tabUserConcepts
             // 
-            this.tabConcepts.Controls.Add(this.lstConceptList);
-            this.tabConcepts.ImageIndex = 1;
-            this.tabConcepts.Location = new System.Drawing.Point(4, 23);
-            this.tabConcepts.Name = "tabConcepts";
-            this.tabConcepts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabConcepts.Size = new System.Drawing.Size(266, 325);
-            this.tabConcepts.TabIndex = 0;
-            this.tabConcepts.Text = "Core Concepts";
-            this.tabConcepts.UseVisualStyleBackColor = true;
+            this.tabUserConcepts.Controls.Add(this.lstUserConceptList);
+            this.tabUserConcepts.ImageIndex = 1;
+            this.tabUserConcepts.Location = new System.Drawing.Point(4, 23);
+            this.tabUserConcepts.Name = "tabUserConcepts";
+            this.tabUserConcepts.Padding = new System.Windows.Forms.Padding(3);
+            this.tabUserConcepts.Size = new System.Drawing.Size(266, 327);
+            this.tabUserConcepts.TabIndex = 2;
+            this.tabUserConcepts.Text = "User";
+            this.tabUserConcepts.UseVisualStyleBackColor = true;
             // 
-            // lstConceptList
+            // tabCoreConcepts
             // 
-            this.lstConceptList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstConceptList.FullRowSelect = true;
-            this.lstConceptList.HotTracking = true;
-            this.lstConceptList.ImageIndex = 0;
-            this.lstConceptList.ImageList = this.conceptfolder;
-            this.lstConceptList.Indent = 15;
-            this.lstConceptList.ItemHeight = 18;
-            this.lstConceptList.Location = new System.Drawing.Point(3, 3);
-            this.lstConceptList.Name = "lstConceptList";
-            treeNode1.Name = "";
-            treeNode1.Text = "Node2";
-            treeNode2.Name = "";
-            treeNode2.Text = "Node3";
-            treeNode3.Name = "";
-            treeNode3.Text = "xxxx";
-            treeNode4.Name = "";
-            treeNode4.Text = "Concepts";
-            treeNode5.Name = "";
-            treeNode5.Text = "Node6";
-            treeNode6.Name = "";
-            treeNode6.Text = "Node7";
-            treeNode7.Name = "";
-            treeNode7.Text = "Node8";
-            treeNode8.Name = "";
-            treeNode8.Text = "Node5ffffff";
-            this.lstConceptList.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode8});
-            this.lstConceptList.SelectedImageIndex = 0;
-            this.lstConceptList.ShowLines = false;
-            this.lstConceptList.Size = new System.Drawing.Size(260, 319);
-            this.lstConceptList.Sorted = true;
-            this.lstConceptList.TabIndex = 9;
-            this.lstConceptList.DoubleClick += new System.EventHandler(this.mnuTemplateOpen_Click);
+            this.tabCoreConcepts.Controls.Add(this.lstCoreConceptList);
+            this.tabCoreConcepts.ImageIndex = 1;
+            this.tabCoreConcepts.Location = new System.Drawing.Point(4, 23);
+            this.tabCoreConcepts.Name = "tabCoreConcepts";
+            this.tabCoreConcepts.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCoreConcepts.Size = new System.Drawing.Size(266, 327);
+            this.tabCoreConcepts.TabIndex = 1;
+            this.tabCoreConcepts.Text = "Core";
+            this.tabCoreConcepts.UseVisualStyleBackColor = true;
+            // 
+            // lstCoreConceptList
+            // 
+            this.lstCoreConceptList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstCoreConceptList.FullRowSelect = true;
+            this.lstCoreConceptList.HotTracking = true;
+            this.lstCoreConceptList.ImageIndex = 0;
+            this.lstCoreConceptList.ImageList = this.conceptfolder;
+            this.lstCoreConceptList.Indent = 15;
+            this.lstCoreConceptList.ItemHeight = 18;
+            this.lstCoreConceptList.Location = new System.Drawing.Point(3, 3);
+            this.lstCoreConceptList.Name = "lstCoreConceptList";
+            this.lstCoreConceptList.SelectedImageIndex = 0;
+            this.lstCoreConceptList.ShowLines = false;
+            this.lstCoreConceptList.Size = new System.Drawing.Size(260, 321);
+            this.lstCoreConceptList.Sorted = true;
+            this.lstCoreConceptList.TabIndex = 9;
+            this.lstCoreConceptList.DoubleClick += new System.EventHandler(this.mnuTemplateOpen_Click);
             // 
             // conceptfolder
             // 
@@ -512,8 +477,8 @@ namespace Generator
             this.tabTemplates.Location = new System.Drawing.Point(4, 23);
             this.tabTemplates.Name = "tabTemplates";
             this.tabTemplates.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTemplates.Size = new System.Drawing.Size(266, 325);
-            this.tabTemplates.TabIndex = 1;
+            this.tabTemplates.Size = new System.Drawing.Size(266, 327);
+            this.tabTemplates.TabIndex = 2;
             this.tabTemplates.Text = "Templates";
             this.tabTemplates.UseVisualStyleBackColor = true;
             // 
@@ -528,39 +493,77 @@ namespace Generator
             this.lstTemplateList.ItemHeight = 18;
             this.lstTemplateList.Location = new System.Drawing.Point(3, 3);
             this.lstTemplateList.Name = "lstTemplateList";
-            treeNode9.Name = "";
-            treeNode9.Text = "Node2";
-            treeNode10.Name = "";
-            treeNode10.Text = "Node3";
-            treeNode11.Name = "";
-            treeNode11.Text = "xxxx";
-            treeNode12.Name = "";
-            treeNode12.Text = "Concepts";
-            treeNode13.Name = "";
-            treeNode13.Text = "Node6";
-            treeNode14.Name = "";
-            treeNode14.Text = "Node7";
-            treeNode15.Name = "";
-            treeNode15.Text = "Node8";
-            treeNode16.Name = "";
-            treeNode16.Text = "Node5ffffff";
+            treeNode17.Name = "";
+            treeNode17.Text = "Node2";
+            treeNode18.Name = "";
+            treeNode18.Text = "Node3";
+            treeNode19.Name = "";
+            treeNode19.Text = "xxxx";
+            treeNode20.Name = "";
+            treeNode20.Text = "Concepts";
+            treeNode21.Name = "";
+            treeNode21.Text = "Node6";
+            treeNode22.Name = "";
+            treeNode22.Text = "Node7";
+            treeNode23.Name = "";
+            treeNode23.Text = "Node8";
+            treeNode24.Name = "";
+            treeNode24.Text = "Node5ffffff";
             this.lstTemplateList.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode12,
-            treeNode16});
+            treeNode20,
+            treeNode24});
             this.lstTemplateList.SelectedImageIndex = 0;
             this.lstTemplateList.ShowLines = false;
-            this.lstTemplateList.Size = new System.Drawing.Size(260, 319);
+            this.lstTemplateList.Size = new System.Drawing.Size(260, 321);
             this.lstTemplateList.Sorted = true;
             this.lstTemplateList.StateImageList = this.conceptfolder;
             this.lstTemplateList.TabIndex = 10;
             this.lstTemplateList.DoubleClick += new System.EventHandler(this.lstTemplateList_DoubleClick);
+            // 
+            // lstUserConceptList
+            // 
+            this.lstUserConceptList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstUserConceptList.FullRowSelect = true;
+            this.lstUserConceptList.HotTracking = true;
+            this.lstUserConceptList.ImageIndex = 0;
+            this.lstUserConceptList.ImageList = this.conceptfolder;
+            this.lstUserConceptList.Indent = 15;
+            this.lstUserConceptList.ItemHeight = 18;
+            this.lstUserConceptList.LineColor = System.Drawing.Color.Empty;
+            this.lstUserConceptList.Location = new System.Drawing.Point(3, 3);
+            this.lstUserConceptList.Name = "lstUserConceptList";
+            treeNode1.Name = "";
+            treeNode1.Text = "Node2";
+            treeNode2.Name = "";
+            treeNode2.Text = "Node3";
+            treeNode3.Name = "";
+            treeNode3.Text = "xxxx";
+            treeNode4.Name = "";
+            treeNode4.Text = "Concepts";
+            treeNode5.Name = "";
+            treeNode5.Text = "Node6";
+            treeNode6.Name = "";
+            treeNode6.Text = "Node7";
+            treeNode7.Name = "";
+            treeNode7.Text = "Node8";
+            treeNode8.Name = "";
+            treeNode8.Text = "Node5ffffff";
+            this.lstUserConceptList.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode8});
+            this.lstUserConceptList.SelectedImageIndex = 0;
+            this.lstUserConceptList.ShowLines = false;
+            this.lstUserConceptList.Size = new System.Drawing.Size(260, 321);
+            this.lstUserConceptList.Sorted = true;
+            this.lstUserConceptList.TabIndex = 9;
+            this.lstUserConceptList.DoubleClick += new System.EventHandler(this.mnuTemplateOpen_Click);
             // 
             // splitter2
             // 
             this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
             this.splitter2.Location = new System.Drawing.Point(702, 0);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(5, 356);
+            this.splitter2.Size = new System.Drawing.Size(5, 358);
             this.splitter2.TabIndex = 18;
             this.splitter2.TabStop = false;
             // 
@@ -572,24 +575,17 @@ namespace Generator
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.GenerationStatus,
-            this.StatusLabel,
-            this.ProgressBar,
-            this.toolStripStatusLabel3,
-            this.toolStripSolution,
-            this.toolStripProject});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 551);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 553);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(985, 24);
+            this.statusStrip1.Size = new System.Drawing.Size(985, 22);
             this.statusStrip1.TabIndex = 20;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // GenerationStatus
             // 
-            this.GenerationStatus.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.GenerationStatus.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.GenerationStatus.Name = "GenerationStatus";
             this.GenerationStatus.Size = new System.Drawing.Size(100, 19);
             this.GenerationStatus.Text = "Generationstatus";
@@ -618,9 +614,9 @@ namespace Generator
             // 
             // toolStripSolution
             // 
-            this.toolStripSolution.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripSolution.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripSolution.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.toolStripSolution.Name = "toolStripSolution";
             this.toolStripSolution.Size = new System.Drawing.Size(58, 19);
@@ -629,9 +625,9 @@ namespace Generator
             // 
             // toolStripProject
             // 
-            this.toolStripProject.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)
-                        | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripProject.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripProject.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.toolStripProject.Name = "toolStripProject";
             this.toolStripProject.Size = new System.Drawing.Size(51, 19);
@@ -652,15 +648,13 @@ namespace Generator
             this.Menu = this.mnuMain;
             this.Name = "TemplateMain";
             this.Text = "NextGen 2.1.0.12";
-            this.Shown += new System.EventHandler(this.TemplateMain_Shown);
             this.Closing += new System.ComponentModel.CancelEventHandler(this.TemplateMain_Closing);
             this.Load += new System.EventHandler(this.TemplateMain_Load);
+            this.Shown += new System.EventHandler(this.TemplateMain_Shown);
             this.panel1.ResumeLayout(false);
             this.tabWindow.ResumeLayout(false);
-            this.tabConcepts.ResumeLayout(false);
+            this.tabCoreConcepts.ResumeLayout(false);
             this.tabTemplates.ResumeLayout(false);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -678,17 +672,11 @@ namespace Generator
         private System.Windows.Forms.MenuItem 
 										mnuOpen;
         private System.Windows.Forms.MenuItem 
-										mnuAddNew;
-        private System.Windows.Forms.MenuItem 
 										menuItem8;
-        private System.Windows.Forms.MenuItem 
-										mnuSolution;
         private System.Windows.Forms.MenuItem 
 										menuItem13;
         private System.Windows.Forms.MenuItem 
 										mnuExit;
-        private System.Windows.Forms.MenuItem 
-										menuItem9;
         private System.Windows.Forms.MenuItem 
 										mnuReloadCache;
         private System.Windows.Forms.OpenFileDialog 
@@ -721,12 +709,13 @@ namespace Generator
 										mnuCloseAll;
         private System.Windows.Forms.MenuItem 
 										mnuCloseBut;
-        private MenuItem mnuImport;
         private OpenFileDialog importFileDialog;
         private Panel panel1;
         private TabControl tabWindow;
-        private TabPage tabConcepts;
-        private TreeView lstConceptList;
+        private TabPage tabCoreConcepts;
+        private TabPage tabUserConcepts;
+        private TreeView lstUserConceptList;
+        private TreeView lstCoreConceptList;
         private TabPage tabTemplates;
         private Splitter splitter2;
         private TreeView lstTemplateList;
@@ -748,57 +737,60 @@ namespace Generator
 			return cm_Instance;
 		}
 
-		/// <summary>
-		/// Generate the userconcept identified by the concept and name.
-		/// Identify the concept by passing the conceptname and the name.
-		/// </summary>
-		/// <param name="concept_name"></param>
-		public static ArrayList GenerateUserConcept(string concept_request, string name_request)
-		{
-			
-			//XmlNode					instance	= TemplateCache.Instance().GetValueFor(name, concept).CloneNode(true);
-			XmlNode						alltemplates= TemplateCache.Instance().GetTypesList("__TemplateFile");
+        //*****************************************************
+        //28-7-2023 uitgecomment want lijkt niet in gebruik
+        //*****************************************************
+        ///// <summary>
+        ///// Generate the userconcept identified by the concept and name.
+        ///// Identify the concept by passing the conceptname and the name.
+        ///// </summary>
+        ///// <param name="concept_name"></param>
+        //public static ArrayList GenerateUserConcept(string concept_request, string name_request)
+        //{
 
-			string[]					todolist	= TemplateCache.Instance().GetViewableTypenamesList(true, true);
+        //	//XmlNode					instance	= TemplateCache.Instance().GetValueFor(name, concept).CloneNode(true);
+        //	XmlNode						alltemplates= TemplateCache.Instance().GetTypesList("__TemplateFile");
 
-			// First add all items to do to a list, then do them and present progress...
-			ArrayList					todo		= new ArrayList();
+        //	string[]					todolist	= TemplateCache.Instance().GetViewableTypenamesList(true, true);
 
-			foreach(string concept in TemplateCache.Instance().GetViewableTypenamesList(true, true))
-			{
-				// allow for passing of '' as concept to get all concepts
-				if (concept_request != "" && concept != concept_request)
-					continue;
+        //	// First add all items to do to a list, then do them and present progress...
+        //	ArrayList					todo		= new ArrayList();
 
-				XmlNode					definition	= TemplateCache.Instance().GetTemplateType(concept);
-				foreach (XmlNode instance in TemplateCache.Instance().GetTypesList(concept))
-				{
-					// Generate all of concept when no name given, or only with the given name
-					string				inst_name	= instance.FirstChild.SelectSingleNode(definition.Attributes["nameattribute"].Value).InnerText;
-					if (name_request != "" && inst_name != name_request)
-						continue;
+        //	foreach(string concept in TemplateCache.Instance().GetViewableTypenamesList(true, true))
+        //	{
+        //		// allow for passing of '' as concept to get all concepts
+        //		if (concept_request != "" && concept != concept_request)
+        //			continue;
 
-					// 
-					foreach (XmlNode templatefiletype in alltemplates)
-					{
-						string			applies_to	= templatefiletype.SelectSingleNode("type/appliesto").InnerText;
-						if (applies_to == concept)
-						{
-							todo.Add(new GenerationRequest(
-								definition, 
-								instance.FirstChild,
-								templatefiletype.FirstChild, 
-								inst_name)
-								);			
-						}
-					}
-				}
-			}
+        //		XmlNode					definition	= TemplateCache.Instance().GetTemplateType(concept);
+        //		foreach (XmlNode instance in TemplateCache.Instance().GetTypesList(concept))
+        //		{
+        //			// Generate all of concept when no name given, or only with the given name
+        //			string				inst_name	= instance.FirstChild.SelectSingleNode(definition.Attributes["nameattribute"].Value).InnerText;
+        //			if (name_request != "" && inst_name != name_request)
+        //				continue;
 
-			return todo;
-		}
+        //			// 
+        //			foreach (XmlNode templatefiletype in alltemplates)
+        //			{
+        //				string			applies_to	= templatefiletype.SelectSingleNode("type/appliesto").InnerText;
+        //				if (applies_to == concept)
+        //				{
+        //					todo.Add(new GenerationRequest(
+        //						definition, 
+        //						instance.FirstChild,
+        //						templatefiletype.FirstChild, 
+        //						inst_name)
+        //						);			
+        //				}
+        //			}
+        //		}
+        //	}
 
-		private void TemplateMain_Load(object sender, System.EventArgs e)
+        //	return todo;
+        //}
+
+        private void TemplateMain_Load(object sender, System.EventArgs e)
 		{
 #if THIERRY
 			mnuSaveCache.Visible					= true;
@@ -955,19 +947,6 @@ namespace Generator
 		{
             if (lastbuildmenusforproject != TemplateCache.Instance().ProjectDirectory)
 			{
-				// Addnew menu doen we niet. Dat doe je maar op meta niveau
-				mnuAddNew.Visible					= false;
-				mnuSolution.Visible					= false;
-				/*
-								// Now get all types editable and add this in AddNew menu
-								mnuAddNew.MenuItems.Clear();
-				//				bool addUser = (TemplateCache.ProjectDirectory != "");
-								foreach (String typetype in TemplateCache.Instance().GetViewableTypenamesList(false, true))
-								{
-									// Make 'AddNew>' menu
-									mnuAddNew.MenuItems.Add(typetype, new EventHandler(this.mnuStart_AddNewItem));
-								}
-				*/
 				BuildConceptList(true);
                 lastbuildmenusforproject            = TemplateCache.Instance().ProjectDirectory;
 			}
@@ -1041,7 +1020,7 @@ namespace Generator
 			{
 				// Update the nodes.
 				TreeNode				typenode	= null;
-				foreach (TreeNode tn in lstConceptList.Nodes)
+				foreach (TreeNode tn in lstUserConceptList.Nodes)
 					if (tn.Text == typename)
 					{
 						typenode					= tn;
@@ -1135,32 +1114,40 @@ namespace Generator
 		/// <param name="project_dir"></param>
 		private void BuildConceptList(bool project_dir)
 		{
-			lstConceptList.Nodes.Clear();
+			lstUserConceptList.Nodes.Clear();
+            lstCoreConceptList.Nodes.Clear();
+
             this.Update();
             Cursor = Cursors.WaitCursor;
             
             // Fill toolstrip texts on project and solution
             string project = TemplateCache.Instance().projectfile;
             string solution = TemplateCache.Instance().SolutionLocation;
-            if (project == "" && TemplateCache.Instance().TemplatefilesEditable)
-            {
-                project = "Templates and Core concepts";
-            }
+            //if (project == "" && TemplateCache.Instance().TemplatefilesEditable)
+            //{
+            //    project = "Core concepts and Templates";
+            //    this.tabCoreConcepts.Text = "Core Concepts";
+            //} else
+            //{
+            //    this.tabCoreConcepts.Text = "User Concepts";
+            //}
+
             toolStripProject.Text = "Project: " + System.IO.Path.GetFileNameWithoutExtension(project);
             toolStripProject.ToolTipText = project;
-            toolStripSolution.Text = "Solution: " + System.IO.Path.GetFileNameWithoutExtension(solution);
+            toolStripSolution.Text = "DSL: " + System.IO.Path.GetFileNameWithoutExtension(solution);
             toolStripSolution.ToolTipText = solution;
 
-            string[] types = TemplateCache.Instance().GetViewableTypenamesList(project_dir, !project_dir);
-            ProgressBar.Maximum = types.Length;
+            string[] usertypes = TemplateCache.Instance().GetViewableTypenamesList(project_dir, !project_dir);
+            string[] coretypes = TemplateCache.Instance().GetViewableTypenamesList(!project_dir, project_dir);
+            ProgressBar.Maximum = usertypes.Length + coretypes.Length;
             ProgressBar.Value = 0;
             ProgressBar.Visible = true;
 
-			foreach (string type in types)
+			foreach (string type in usertypes)
             {
                 ProgressBar.Value++;
 
-        		TreeNode			n			= lstConceptList.Nodes.Add(type, type);
+        		TreeNode			n			= lstUserConceptList.Nodes.Add(type, type);
     			foreach (String typename in TemplateCache.Instance().GetTypenamesList(type))
 				{
 					TreeNode newitem = n.Nodes.Add(typename);
@@ -1168,6 +1155,19 @@ namespace Generator
                     newitem.SelectedImageIndex = 1;
                 }
 			}
+            foreach (string type in coretypes)
+            {
+                ProgressBar.Value++;
+
+                TreeNode n = lstCoreConceptList.Nodes.Add(type, type);
+                foreach (String typename in TemplateCache.Instance().GetTypenamesList(type))
+                {
+                    TreeNode newitem = n.Nodes.Add(typename);
+                    newitem.ImageIndex = 1;
+                    newitem.SelectedImageIndex = 1;
+                }
+            }
+
             BuildTemplateList();
             ProgressBar.Visible = false;
             Cursor = Cursors.Default;
@@ -1176,23 +1176,24 @@ namespace Generator
         {
             lstTemplateList.Nodes.Clear();
 
-            if (!TemplateCache.Instance().TemplatefilesEditable)
-            {
-                if (tabWindow.TabPages.Count > 1)
-                {
-                    tabWindow.TabPages.RemoveAt(1);
-                }
-                return;
-            }
+            // 28-7-2023 in poging om templates altijd te tonen.
+            //if (!TemplateCache.Instance().TemplatefilesEditable)
+            //{
+            //    if (tabWindow.TabPages.Count > 1)
+            //    {
+            //        tabWindow.TabPages.RemoveAt(1);
+            //    }
+            //    return;
+            //}
 
-            if (tabWindow.TabCount == 1)
-            {
-                tabWindow.TabPages.Add(tabTemplates);
-            }
-            /* if (todolist.GetLength(0) == 0)
-            {
-                tabWindow.
-            } */
+            //if (tabWindow.TabCount == 1)
+            //{
+            //    tabWindow.TabPages.Add(tabTemplates);
+            //}
+            ///* if (todolist.GetLength(0) == 0)
+            //{
+            //    tabWindow.
+            //} */
 
             foreach (XmlNode x in TemplateCache.Instance().GetTypesList("__TemplateFile"))
             {
@@ -1225,7 +1226,7 @@ namespace Generator
 		private void ConceptsMenuDelete(string type, string name)
 		{
 
-			foreach (TreeNode n in lstConceptList.Nodes)
+			foreach (TreeNode n in lstUserConceptList.Nodes)
 			{
 				if (n.Text == type)
 				{
@@ -1243,7 +1244,7 @@ namespace Generator
 
 		private void ConceptsMenuAdd(string type, string name)
 		{
-			foreach (TreeNode n in lstConceptList.Nodes)
+			foreach (TreeNode n in lstUserConceptList.Nodes)
 			{
 				if (n.Text == type)
 				{
@@ -1686,19 +1687,19 @@ namespace Generator
 		}
 		private void HideConceptsList()
 		{
-			lstConceptList.Visible					= false;
+			lstUserConceptList.Visible					= false;
 			splitter2.Visible						= false;
 		}
 		private void ShowConceptsList()
 		{
 			splitter2.Visible						= true;
-			lstConceptList.Visible					= true;
+			lstUserConceptList.Visible					= true;
 		}
 
 		private void mnuViewConcepts_Click(object sender, System.EventArgs e)
 		{
 
-			if (lstConceptList.Visible)
+			if (lstUserConceptList.Visible)
 				HideConceptsList();
 			else
 				ShowConceptsList();
@@ -1714,7 +1715,7 @@ namespace Generator
 
 		private void mnuView_Popup(object sender, System.EventArgs e)
 		{
-			mnuViewConcepts.Checked					= (lstConceptList.Visible);
+			mnuViewConcepts.Checked					= (lstUserConceptList.Visible);
 			mnuViewOutput.Checked					= (txtOutput.Visible);
 		}
 
@@ -1777,161 +1778,6 @@ namespace Generator
 
         private void mnuImport_Click(object sender, EventArgs e)
         {
-            importFileDialog.Multiselect = false;
-            importFileDialog.CheckFileExists = true;
-            openFileDialog.Title = "Import Enterprise Architect export file";
-            //string xsltfile = "";
-
-            String importDir = "C:\\";
-            AppSettingsReader asr = new AppSettingsReader();
-            if (asr.GetValue("importdir", typeof(String)) != null)
-                importDir = (String)asr.GetValue("importdir", typeof(String));
-
-            importFileDialog.Filter = "XML files (*.xml)|*.xml";
-            importFileDialog.InitialDirectory = importDir;
-            importFileDialog.FileName = "";
-            importFileDialog.RestoreDirectory = false;
-
-            if (importFileDialog.ShowDialog(this) != DialogResult.OK)
-                return;
-
-            string filename = importFileDialog.FileName;
-
-            this.Cursor = Cursors.WaitCursor;
-            this.ProgressBar.Value = 0;
-            this.ProgressBar.Style = ProgressBarStyle.Marquee;
-            this.ProgressBar.Maximum = 100;
-            this.ProgressBar.Visible = true;
-            //Application.RaiseIdle(null);
-            //this.ProgressBar.Value = 2;
-            this.Invalidate();
-            this.Update();
-
-            string importfailedfor = ",";
-            int imported = 0;
-            try
-            {
-                System.Xml.Xsl.XslCompiledTransform xsl = new System.Xml.Xsl.XslCompiledTransform();
-                XmlDocument xdoc = new XmlDocument();
-                string xsltfile = "";
-                if (asr.GetValue("xsltfile", typeof(String)) != null)
-                    xsltfile = (String)asr.GetValue("xsltfile", typeof(String));
-
-                if (xsltfile == "")
-                {
-                    // Gebruik het standaard uitgeleverde xslt bestand in de resource
-                    xdoc.LoadXml(Generator.Properties.Resources.Ea2Nextgen);
-                }
-                else
-                {
-                    // Laad het bestand uit de gegeven bestandsnaam
-                    xsltfile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), xsltfile);
-                    xdoc.Load(xsltfile);
-                }
-
-                xsl.Load(xdoc);
-
-                String source_xml_content = File.ReadAllText(filename);
-                String result = source_xml_content;
-
-                XmlDocument xd = new XmlDocument();
-                xd.LoadXml(result); // 
-                // Value = 5;
-                MemoryStream ms = new MemoryStream();
-
-                xsl.Transform(xd, null, ms);
-                this.ProgressBar.Style = ProgressBarStyle.Blocks;
-                this.ProgressBar.Value = 10;
-                if ((String)asr.GetValue("tempfile", typeof(String)) != null)
-                {
-                    string tempfile = (String)asr.GetValue("tempfile", typeof(String));
-                    /* */
-                    string outputdirectory = Path.GetDirectoryName(tempfile);
-                    if (!Directory.Exists(outputdirectory))
-                        Directory.CreateDirectory(outputdirectory);
-
-                    ms.Position = 0;
-                    StreamReader sr = new StreamReader(ms);
-                    StreamWriter sw = File.CreateText(tempfile);
-                    sw.WriteLine(sr.ReadToEnd());
-                    sw.Close();
-                    /* */
-                }
-                ms.Position = 0;
-                XmlDocument xd2 = new XmlDocument();
-                xd2.Load(ms);
-
-                XmlNodeList results = xd2.SelectNodes("results/type[@definition!='']");
-                int progression = 0;
-                foreach (XmlNode element in results)
-                {
-                    this.ProgressBar.Value = 10 + (++progression * 90 / results.Count);
-                    XmlAttribute attdef = element.Attributes["definition"];
-                    if (attdef == null)
-                        continue;
-                    string definition = attdef.Value;
-                    XmlNode namenode = element.SelectSingleNode("name");
-                    if (namenode == null)
-                        continue;
-                    string name = namenode.InnerText;
-                    // Remove odd characters from the (file)name
-                    foreach (char c in Path.GetInvalidFileNameChars())
-                        name.Replace(c.ToString(), "");
-                    namenode.InnerText = name;
-
-                    XmlNode newitem = null;
-                    try
-                    {
-                        string type_dir = System.IO.Path.Combine(TemplateCache.Instance().ProjectDirectory, definition);
-                        string fname = System.IO.Path.Combine(type_dir, name + ".xmt");
-
-                        XmlNode node;
-                        newitem = TemplateCache.Instance().AddNewTemplateFile(definition, name, fname, out node);
-                        imported += 1;
-                    }
-                    catch (ArgumentException)
-                    {
-                        System.Diagnostics.Debug.WriteLine("Could not create file for '" + name + "'");
-                        if (!importfailedfor.Contains("," + name + ","))
-                        {
-                            importfailedfor += name + ",";
-                        }
-                        continue;
-                    }
-                    catch (ApplicationException)
-                    {
-                        System.Diagnostics.Debug.WriteLine("Could not create file for '" + name + "'");
-                        if (!importfailedfor.Contains("," + name + ","))
-                        {
-                            importfailedfor += name + ",";
-                        }
-                        continue;
-                    }
-                    //XmlDocumentFragment df = newitem.OwnerDocument.CreateDocumentFragment();
-                    foreach (XmlNode n in element.ChildNodes)
-                    {
-                        if (n.Name != "name")
-                            newitem.FirstChild.AppendChild(Kloon(newitem.OwnerDocument, n));
-                    }
-                    string f;
-                    TemplateCache.Instance().SaveFile(out f, newitem.FirstChild);
-                    ConceptsMenuAdd(definition, name);
-                }
-            }
-            finally
-            {
-                this.ProgressBar.Visible = false;
-                this.Cursor = Cursors.Default;
-            }
-            if (importfailedfor == ",")
-            {
-                MessageBox.Show("Successfully imported " + imported.ToString() + " concepts.", "Import result", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Successfully imported " + imported.ToString() + " concepts. Import failed for: " + importfailedfor.Substring(1, importfailedfor.Length - 2), "Import result", MessageBoxButtons.OK, MessageBoxIcon.Error); 
-            }
-
         }
 
         private XmlNode Kloon(XmlDocument doc, XmlNode toClone)
@@ -2005,7 +1851,7 @@ namespace Generator
         }
         private void mnuOptions_Click(object sender, EventArgs e)
         {
-            Options o = new Options();
+            Settings o = new Settings();
             o.ShowDialog();
         }
 

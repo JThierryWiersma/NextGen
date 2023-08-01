@@ -234,12 +234,12 @@ namespace Generator.Expressions
 				if (bGotoNextPart)
 					continue;
 
-                throw new UnknownTokenException(-1 ,expression.Substring(0,i)); //this new StringVar(String.Format("Syntax error. '{0}' unexpected.", expression.Substring(0,i)));
+                throw new UnknownTokenException(null ,expression.Substring(0,i)); //this new StringVar(String.Format("Syntax error. '{0}' unexpected.", expression.Substring(0,i)));
 				//throw new ApplicationException(String.Format("Syntax error. '{0}' unexpected.", expression.Substring(0,i)));
 			}
 
             if (bLastTokenWasOperand)
-                throw new OperatorExpectedException(-1, expression.Substring(-1, expression.Length - 2));
+                throw new OperatorExpectedException(null, expression.Substring(-1, expression.Length - 2));
 
 			//ProcessOperator();
 			if (mOperands.Count == 0)

@@ -451,19 +451,19 @@ namespace Generator.Utility
 
                 if (type == "TypeDefs")
                 {
-                    path = m_solutionlocation + @"\TemplateDefinitions";
+                    path = m_solutionlocation + @"\UserConcept";
                     mask = "*.xml";
                 }
                 else
                 {
                     XmlNode typedef = GetValueFor("TypeDefs", type);
                     if (typedef == null)
-                        throw new ApplicationException("Type not found");
+                        throw new ApplicationException($"Type '{type}' not found");
 
                     XmlAttribute att = (typedef == null) ? null : typedef.Attributes["user"];
                     if (type == "__TemplateFile")
                     {
-                        path = m_solutionlocation + @"\TemplateFile";
+                        path = m_solutionlocation + @"\Template";
                     }
                     else if (att == null || att.Value != "true")
                     {
@@ -517,9 +517,9 @@ namespace Generator.Utility
 			// Make sure the cache is filled for the type
 			XmlNode						values		= GetTypesList("TypeDefs");
 			// And now get it from the list
-			XmlNode						result		= values.SelectSingleNode("n[@name='" + type + "']");
+			XmlNode						result		= values.SelectSingleNode("n[@searchname='" + type.ToLower() + "']");
 			if (result == null)
-				throw new ApplicationException("Type definition not found for '" + type + "'");
+				throw new ApplicationException("Type definition not found for (searchname) '" + type + "'");
 
 			return result.FirstChild;
 		}
@@ -600,12 +600,12 @@ namespace Generator.Utility
 			XmlNode						result		= m_cache.DocumentElement.SelectSingleNode(type);
 			if (result == null)
 			{
-				string					path		= "";
+				string[]				paths		= new string[] { "" };
 				string					mask;
 
 				if (type == "TypeDefs")
 				{
-					path							= m_solutionlocation +	@"\TemplateDefinitions";
+					paths							= new string[] { m_solutionlocation + @"\UserConcept", m_solutionlocation + @"\CoreConcept" };
 					mask							= "*.xml";
 				}
 				else
@@ -617,37 +617,42 @@ namespace Generator.Utility
 					XmlAttribute		att			= ( typedef == null ) ? null : typedef.Attributes["user"];
     				if (type == "__TemplateFile")
                     {
-						path					= m_solutionlocation +	@"\TemplateFile";
+						paths[0]					= m_solutionlocation + @"\Template";
                     }
 					else if (att == null || att.Value != "true")
 					{
-						path					= m_solutionlocation +	@"\" + type;
+                        paths[0]					= m_solutionlocation + @"\" + type;
 					}
                     else if (m_project_directory != "")
                     {
-                        path                    = m_project_directory + @"\" + type;
+						paths[0]                    = m_project_directory + @"\" + type;
                     }
 					nameattribute					= typedef.Attributes["nameattribute"].Value;
 
 					mask							= "*.xmt";
 				}
-				if (path != "")
-				{
-					string[]			files		= Directory_GetFiles(path, mask);
-					string				file		= "";
-					XmlNode				docs		= m_cache.CreateElement(type);
-					m_cache.DocumentElement.AppendChild(docs);
 
-					foreach (string f in files)
+				if (paths[0] != "")
+				{
+                    XmlNode docs = m_cache.CreateElement(type);
+                    m_cache.DocumentElement.AppendChild(docs);
+
+                    foreach (string path in paths)
 					{
-						try
+						string[] files = Directory_GetFiles(path, mask);
+						string file = "";
+
+						foreach (string f in files)
 						{
-							file					= f;
-							LoadFileIntoCache(f, nameattribute, docs, type);
-						}
-						catch (Exception ex)
-						{
-							throw new ApplicationException(string.Format("Malformed type definition found in file '{0}':{1}", file, ex.Message), ex);
+							try
+							{
+								file = f;
+								LoadFileIntoCache(f, nameattribute, docs, type);
+							}
+							catch (Exception ex)
+							{
+								throw new ApplicationException(string.Format("Malformed type definition found in file '{0}':{1}", file, ex.Message), ex);
+							}
 						}
 					}
 					if (type == "TypeDefs")
@@ -675,7 +680,7 @@ namespace Generator.Utility
 				"	<element name=\"name\" lines=\"1\" type=\"Name\"/>" +
 				"	<element name=\"description\" lines=\"3\"/>" +
 				"	<element name=\"group\" type=\"group\"/>" +
-				"	<element name=\"appliesto\" caption=\"Applicable concept\" type=\"userconcept\"/>" +
+				"	<element name=\"appliesto\" caption=\"Applicable concept\" type=\"UserConcept\"/>" +
 				"	<element name=\"templatefilename\" caption=\"Template filename\"/>" +
 				"	<element name=\"directory\" caption=\"Directoryname\" type=\"Text\"/>" +
 				"	<element name=\"filename\" caption=\"Filename\" type=\"Text\"/>" +
@@ -708,7 +713,7 @@ namespace Generator.Utility
 			// Skip if it refers to another type of definition
 			// Store the sourcefilename in the documentelement
 			XmlAttribute				a			= td.CreateAttribute("sourcefile");
-			a.Value									= filename;
+			a.Value                                 = filename;
 			td.DocumentElement.Attributes.Append(a);
 			
 			// Check available solution attribute, otherwise add it.

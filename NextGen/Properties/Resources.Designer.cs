@@ -19,7 +19,7 @@ namespace Generator.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,32 +57,6 @@ namespace Generator.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to dut is un tust.
-        /// </summary>
-        internal static string DSLDESIGN {
-            get {
-                return ResourceManager.GetString("DSLDESIGN", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-        ///&lt;xsl:stylesheet version=&quot;2.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:fn=&quot;http://www.w3.org/2005/xpath-functions&quot; xmlns:UML=&quot;omg.org/UML1.3&quot; &gt;
-        ///  &lt;xsl:output method=&quot;xml&quot; version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; indent=&quot;yes&quot;/&gt;
-        ///  &lt;xsl:template match=&quot;XMI&quot; mode=&quot;#all&quot;&gt;
-        ///    &lt;xsl:element name=&quot;results&quot;&gt;
-        ///      &lt;xsl:apply-templates select=&quot;./*&quot;/&gt;
-        ///    &lt;/xsl:element&gt;
-        ///  &lt;/xsl:template&gt;
-        ///  &lt;xsl:template match=&quot;//UML:Class|UM [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Ea2Nextgen {
-            get {
-                return ResourceManager.GetString("Ea2Nextgen", resourceCulture);
             }
         }
     }

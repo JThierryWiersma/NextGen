@@ -46,6 +46,7 @@ namespace Generator
             this.btnNew = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -74,9 +75,9 @@ namespace Generator
             // 
             // grpOpen
             // 
-            this.grpOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpOpen.Controls.Add(this.lstProjects);
             this.grpOpen.Controls.Add(this.btnProject);
             this.grpOpen.Controls.Add(this.label3);
@@ -92,9 +93,9 @@ namespace Generator
             // 
             // lstProjects
             // 
-            this.lstProjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstProjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstProjects.ColumnWidth = 150;
             this.lstProjects.FormattingEnabled = true;
             this.lstProjects.IntegralHeight = false;
@@ -104,10 +105,10 @@ namespace Generator
             this.lstProjects.Size = new System.Drawing.Size(107, 120);
             this.lstProjects.TabIndex = 1;
             this.toolTip.SetToolTip(this.lstProjects, "Select one of the recently used projects below or start a new project using the P" +
-                    "roject... button");
-            this.lstProjects.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstProjects_MouseDoubleClick);
+        "roject... button");
             this.lstProjects.SelectedIndexChanged += new System.EventHandler(this.CheckOpenButtonsStatus);
             this.lstProjects.Enter += new System.EventHandler(this.lstProjects_Enter);
+            this.lstProjects.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstProjects_MouseDoubleClick);
             // 
             // btnProject
             // 
@@ -140,6 +141,7 @@ namespace Generator
             this.btnTemplates.Text = "&Templates";
             this.toolTip.SetToolTip(this.btnTemplates, "Open the system concept and template editor for the selected project");
             this.btnTemplates.UseVisualStyleBackColor = true;
+            this.btnTemplates.Visible = false;
             this.btnTemplates.Click += new System.EventHandler(this.btnTemplates_Click);
             // 
             // btnDefinition
@@ -152,6 +154,7 @@ namespace Generator
             this.btnDefinition.Text = "&Definition";
             this.toolTip.SetToolTip(this.btnDefinition, "Open the definition of the selected project");
             this.btnDefinition.UseVisualStyleBackColor = true;
+            this.btnDefinition.Visible = false;
             this.btnDefinition.Click += new System.EventHandler(this.btnDefinition_Click);
             // 
             // btnOpen
@@ -168,9 +171,9 @@ namespace Generator
             // 
             // grpNew
             // 
-            this.grpNew.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpNew.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpNew.Controls.Add(this.btnCancel);
             this.grpNew.Controls.Add(this.label4);
             this.grpNew.Controls.Add(this.lstSolutions);
@@ -181,7 +184,7 @@ namespace Generator
             this.grpNew.Size = new System.Drawing.Size(317, 110);
             this.grpNew.TabIndex = 0;
             this.grpNew.TabStop = false;
-            this.grpNew.Text = "Open new project";
+            this.grpNew.Text = "Create project";
             // 
             // btnCancel
             // 
@@ -200,15 +203,15 @@ namespace Generator
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 23);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 13);
+            this.label4.Size = new System.Drawing.Size(77, 13);
             this.label4.TabIndex = 17;
-            this.label4.Text = "Last used solutions";
+            this.label4.Text = "Last used DSL";
             // 
             // lstSolutions
             // 
-            this.lstSolutions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstSolutions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstSolutions.ColumnWidth = 150;
             this.lstSolutions.FormattingEnabled = true;
             this.lstSolutions.IntegralHeight = false;
@@ -218,10 +221,10 @@ namespace Generator
             this.lstSolutions.Size = new System.Drawing.Size(107, 88);
             this.lstSolutions.TabIndex = 6;
             this.toolTip.SetToolTip(this.lstSolutions, "Select one of the recently used solutions below to create a project for or select" +
-                    " a solution type using the Solution.... button");
-            this.lstSolutions.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstSolutions_MouseDoubleClick);
+        " a solution type using the Solution.... button");
             this.lstSolutions.SelectedIndexChanged += new System.EventHandler(this.CheckNewButtonsStatus);
             this.lstSolutions.Enter += new System.EventHandler(this.lstSolutions_Enter);
+            this.lstSolutions.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstSolutions_MouseDoubleClick);
             // 
             // btnSolution
             // 
@@ -230,7 +233,7 @@ namespace Generator
             this.btnSolution.Name = "btnSolution";
             this.btnSolution.Size = new System.Drawing.Size(79, 26);
             this.btnSolution.TabIndex = 8;
-            this.btnSolution.Text = "&Solution...";
+            this.btnSolution.Text = "&DSL...";
             this.toolTip.SetToolTip(this.btnSolution, "To browse to a solution not in de last-recent-used list");
             this.btnSolution.UseVisualStyleBackColor = true;
             this.btnSolution.Click += new System.EventHandler(this.btnSolution_Click);
@@ -273,6 +276,7 @@ namespace Generator
             this.Load += new System.EventHandler(this.NewOpenProject_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.grpOpen.ResumeLayout(false);
             this.grpOpen.PerformLayout();

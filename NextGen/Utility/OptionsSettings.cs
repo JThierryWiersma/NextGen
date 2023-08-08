@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.Win32;
 using System.Drawing;
 using System.Collections.Specialized;
+using System.IO;
 
 namespace Generator.Utility
 {
@@ -123,6 +124,50 @@ namespace Generator.Utility
         }
 
         /// <summary>
+        /// Returns the last used solution folder, if any.
+        /// The parent of the folder where the .xms file was found.
+        /// </summary>
+        /// <returns></returns>
+        public string GetLastUsedSolutionFolder()
+        {
+            RegistryKey masterkey = GetOurKey();
+            return (string)masterkey.GetValue("LastUsedSolutionFolder", "");
+        }
+
+        /// <summary>
+        /// Sets the last used solution folder.
+        /// The parent of the folder where the .xms file was found.
+        /// </summary>
+        /// <returns></returns>
+        public void SetLastUsedSolutionFolder(string Folder)
+        {
+            RegistryKey masterkey = GetOurKey();
+            masterkey.SetValue("LastUsedSolutionFolder", Folder, RegistryValueKind.String);
+        }
+
+        /// <summary>
+        /// Returns the last used project folder, if any
+        /// The parent of the folder where the .xmp file was found.
+        /// </summary>
+        /// <returns></returns>
+        public string GetLastUsedProjectFolder()
+        {
+            RegistryKey masterkey = GetOurKey();
+            return (string)masterkey.GetValue("LastUsedProjectFolder", "");
+        }
+
+        /// <summary>
+        /// Sets the last used project folder.
+        /// The parent of the folder where the .xmp file was found.
+        /// </summary>
+        /// <returns></returns>
+        public void SetLastUsedProjectFolder(string Folder)
+        {
+            RegistryKey masterkey = GetOurKey();
+            masterkey.SetValue("LastUsedProjectFolder", Folder, RegistryValueKind.String);
+        }
+
+        /// <summary>
         /// Doorloop alle waardes genaamd 't'_{getal startend op 0} en verzamel 
         /// de string waardes in een lijst. Geef die lijst terug op het moment
         /// dat het element niet meer gevonden is.
@@ -172,6 +217,36 @@ namespace Generator.Utility
             filenames.CopyTo(result, 0);
             return result;
         }
+
+        public void ValidateLastUsedSolutions()
+        {
+            foreach (string file in this.GetLastUsedSolutions())
+            {
+                if (! File.Exists(file))
+                {
+                    this.UnRegisterLastUsedSolution(file);
+                }
+                else
+                {
+                    this.RegisterFor(LRU_SOLUTION, file);
+                }
+            }
+        }
+        public void ValidateLastUsedProjects()
+        {
+            foreach (string file in this.GetLastUsedProjects())
+            {
+                if (!File.Exists(file))
+                {
+                    this.UnRegisterLastUsedProject(file);
+                }
+                else
+                {
+                    this.RegisterFor(LRU_PROJECT, file);
+                }
+            }
+        }
+
         /// <summary>
         /// Neem voor de Last-recent-used list met de gegeven naam t, 
         /// de meegegeven filename op.
@@ -183,17 +258,24 @@ namespace Generator.Utility
         private void RegisterFor(string t, string filename)
         {
             StringCollection strings = CollectLruListFor(t);
-            if (strings.Contains(filename))
+            while (strings.Contains(filename))
             {
                 strings.Remove(filename);
             }
             strings.Insert(0, filename);
 
             RegistryKey masterkey = GetOurKey();
-            for (int i = 0; i < MAX_RECENTLYUSED_TO_REMEMBER && i < strings.Count; i++)
+            for (int i = 0; i < MAX_RECENTLYUSED_TO_REMEMBER; i++)
             {
                 string valuename = String.Format("{0}_{1}", t, i.ToString());
-                masterkey.SetValue(valuename, strings[i], RegistryValueKind.String);
+                if (i < strings.Count)
+                {
+                    masterkey.SetValue(valuename, strings[i], RegistryValueKind.String);
+                }
+                else 
+                {
+                    masterkey.DeleteValue(valuename, false);
+                }
             }
             masterkey.Flush();
         }
@@ -208,6 +290,7 @@ namespace Generator.Utility
             RegisterFor(LRU_PROJECT, project);
             RegisterFor(LRU_SOLUTION, solution);
         }
+
         /// <summary>
         /// Verwijder het bestand uit de lijst. Het was niet meer geldig en willen
         /// we dus niet oneindig in onze lru lijst hebben staan.

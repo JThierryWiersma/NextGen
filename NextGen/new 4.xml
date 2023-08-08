@@ -1,0 +1,3 @@
+<cache>
+<n name="__TemplateFile" searchname="__templatefile"><template sourcefile="__TemplateFile" writable="false" nameattribute="name"><elements><element name="name" lines="1" type="Name" /><element name="description" lines="3" /><element name="group" type="group" /><element name="appliesto" caption="Applicable concept" type="UserConcept" /><element name="templatefilename" caption="Template filename" /><element name="directory" caption="Directoryname" type="Text" /><element name="filename" caption="Filename" type="Text" /><element name="generateonce" caption="Generate once" type="Checkbox" /><element name="copyonly" caption="Copy only" type="Checkbox" /></elements></template></n>
+</cache>

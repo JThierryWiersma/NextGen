@@ -6,6 +6,8 @@ using System;
 using System.Xml;
 using System.IO;
 using System.Collections.Specialized;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Generator.Utility
 {
@@ -21,8 +23,9 @@ namespace Generator.Utility
 
 		private	string			        m_project_directory     = "";
         private string                  m_project_file          = "";
+        private string                  m_project_name          = "";
 
-		private	static TemplateCache	cm_instance;
+        private static TemplateCache	cm_instance;
 
 		private	XmlDocument				m_cache;
 		private	bool					m_solution_as_project = false;
@@ -114,7 +117,12 @@ namespace Generator.Utility
 			return result;
 		}
 
-
+		public string ProjectName
+		{
+			get { 
+				return m_project_name;
+			}
+		}
 
 		/// <summary>
 		/// get/set directory from where user-definable template files are used/saved.
@@ -444,53 +452,52 @@ namespace Generator.Utility
 
 			// Check the cache, and add to it when not available.
 			XmlNode						result		= m_cache.DocumentElement.SelectSingleNode(type);
-            if (result == null)
-            {
-                string path = "";
-                string mask;
+			if (result == null)
+			{
+				var paths = new List<string>();
+				string mask;
 
-                if (type == "TypeDefs")
-                {
-                    path = m_solutionlocation + @"\UserConcept";
-                    mask = "*.xml";
-                }
-                else
-                {
-                    XmlNode typedef = GetValueFor("TypeDefs", type);
-                    if (typedef == null)
-                        throw new ApplicationException($"Type '{type}' not found");
+				if (type == "TypeDefs")
+				{
+					paths.Add(m_solutionlocation + @"\UserConcept");
+					paths.Add(m_solutionlocation + @"\CoreConcept");
+					mask = "*.xml";
+				}
+				else
+				{
+					XmlNode typedef = GetValueFor("TypeDefs", type);
+					if (typedef == null)
+						throw new ApplicationException($"Type '{type}' not found");
 
-                    XmlAttribute att = (typedef == null) ? null : typedef.Attributes["user"];
-                    if (type == "__TemplateFile")
-                    {
-                        path = m_solutionlocation + @"\Template";
-                    }
-                    else if (att == null || att.Value != "true")
-                    {
-                        path = m_solutionlocation + @"\" + type;
-                    }
-                    else if (m_project_directory != "")
-                    {
-                        path = m_project_directory + @"\" + type;
-                    }
-                    nameattribute = typedef.Attributes["nameattribute"].Value;
+					XmlAttribute att = (typedef == null) ? null : typedef.Attributes["user"];
+					if (type == "__TemplateFile")
+					{
+						paths.Add(m_solutionlocation + @"\Template");
+					}
+					else if (att == null || att.Value != "true")
+					{
+						paths.Add(m_solutionlocation + @"\" + type);
+					}
+					else if (m_project_directory != "")
+					{
+						paths.Add(m_project_directory + @"\" + type);
+					}
+					nameattribute = typedef.Attributes["nameattribute"].Value;
 
-                    mask = "*.xmt";
-                }
-                if (path != "")
-                {
-                    string[] files = Directory_GetFiles(path, mask);
-                    string[] names = new string[files.Length];
-                    int i = 0;
-                    foreach (string f in files)
-                        names[i++] = Path.GetFileNameWithoutExtension(f);
-                    Array.Sort(names);
-                    return names;
-                }
-                else
-                {
-                    return new string[0];
-                }
+					mask = "*.xmt";
+				}
+
+				List<string> names = new List<string>();
+
+				foreach (string path in paths)
+				{
+					foreach (string f in Directory_GetFiles(path, mask))
+					{
+						names.Add(Path.GetFileNameWithoutExtension(f));
+                    }
+				}
+				names.Sort();
+				return names.ToArray();
             }
             else
             {
@@ -812,8 +819,15 @@ namespace Generator.Utility
 				return m_solutionlocation;
 			}
 		}
+        public string SolutionName
+        {
+            get
+            {
+                return m_solutionname;
+            }
+        }
 
-		public string SolutionFilename
+        public string SolutionFilename
 		{
 			get
 			{
@@ -834,7 +848,7 @@ namespace Generator.Utility
             bool loaded = false;
             Exception loadex = null;
             String location = "";
-
+			
             // If path has root, it must be a full path. Otherwise test userdata dir first and then appdir.
             if (Path.IsPathRooted(filename))
             {
@@ -927,6 +941,7 @@ namespace Generator.Utility
                 {
                     m_project_directory = projectdir;
                     m_project_file      = filename;
+					m_project_name      = Path.GetFileNameWithoutExtension(filename);
                 }
             }
             catch (Exception ex)

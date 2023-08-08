@@ -47,33 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="bin\Debug\NextGen.application" />
-    <None Include="bin\Debug\NextGen.exe.config" />
-    <None Include="bin\Debug\NextGen.exe.manifest" />
-    <None Include="bin\Debug\NextGen.vshost.application" />
-    <None Include="bin\Debug\NextGen.vshost.exe.config" />
-    <None Include="bin\Debug\NextGen.vshost.exe.manifest" />
-    <None Include="bin\Release\NextGen.application" />
-    <None Include="bin\Release\NextGen.exe.config" />
-    <None Include="bin\Release\NextGen.exe.manifest" />
-    <None Include="bin\Release\NextGen.vshost.application" />
-    <None Include="bin\Release\NextGen.vshost.exe.config" />
-    <None Include="bin\Release\NextGen.vshost.exe.manifest" />
     <None Include="NextGen.csproj" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Debug\NextGen.application" />
-    <None Include="obj\Debug\NextGen.csproj.AssemblyReference.cache" />
-    <None Include="obj\Debug\NextGen.csproj.CoreCompileInputs.cache" />
-    <None Include="obj\Debug\NextGen.csproj.GenerateResource.cache" />
-    <None Include="obj\Debug\NextGen.csprojAssemblyReference.cache" />
-    <None Include="obj\Debug\NextGen.exe.manifest" />
-    <None Include="obj\Release\NextGen.application" />
-    <None Include="obj\Release\NextGen.csproj.AssemblyReference.cache" />
-    <None Include="obj\Release\NextGen.csproj.GenerateResource.Cache" />
-    <None Include="obj\Release\NextGen.exe.manifest" />
     <None Include="Properties\app.manifest" />
-    <None Include="Properties\Settings.settings" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeProcessors\CodeFormatter.cs" />
@@ -152,6 +131,11 @@
     <Compile Include="NewOpenProject.Designer.cs">
       <DependentUpon>NewOpenProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,22 +196,6 @@
     <EmbeddedResource Include="NewOpenProject.resx">
       <DependentUpon>NewOpenProject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="obj\Debug\Generator.FindReplaceDialog.resources" />
-    <EmbeddedResource Include="obj\Debug\Generator.NewOpenProject.resources" />
-    <EmbeddedResource Include="obj\Debug\Generator.Options.resources" />
-    <EmbeddedResource Include="obj\Debug\Generator.Properties.Resources.resources" />
-    <EmbeddedResource Include="obj\Debug\Generator.TemplateFileEditor.resources" />
-    <EmbeddedResource Include="obj\Debug\Generator.TemplateFileEditorV2.resources" />
-    <EmbeddedResource Include="obj\Debug\Generator.TemplateForm.resources" />
-    <EmbeddedResource Include="obj\Debug\Generator.TemplateMain.resources" />
-    <EmbeddedResource Include="obj\Debug\Generator.Welcome.resources" />
-    <EmbeddedResource Include="obj\Release\Generator.NewOpenProject.resources" />
-    <EmbeddedResource Include="obj\Release\Generator.Options.resources" />
-    <EmbeddedResource Include="obj\Release\Generator.Properties.Resources.resources" />
-    <EmbeddedResource Include="obj\Release\Generator.TemplateFileEditor.resources" />
-    <EmbeddedResource Include="obj\Release\Generator.TemplateForm.resources" />
-    <EmbeddedResource Include="obj\Release\Generator.TemplateMain.resources" />
-    <EmbeddedResource Include="obj\Release\Generator.Welcome.resources" />
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>

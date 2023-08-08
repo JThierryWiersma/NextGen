@@ -35,6 +35,12 @@ namespace Generator
         public ToolStripStatusLabel toolStripProject;
         public ToolStripStatusLabel toolStripSolution;
         private MenuItem mnuCopy;
+        private MenuItem mnuNewProjectDSL;
+        private MenuItem menuItem3;
+        private MenuItem mnuProjectRecentDSL;
+        private MenuItem mnuOpenProjectFile;
+        private MenuItem menuItem6;
+        private MenuItem mnuOpenProjectRecent;
         private bool firstload = true;
 		public TemplateMain()
 		{
@@ -73,7 +79,6 @@ namespace Generator
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateMain));
             System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Node2");
             System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Node3");
             System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("xxxx");
@@ -88,6 +93,7 @@ namespace Generator
             treeNode21,
             treeNode22,
             treeNode23});
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateMain));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node2");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node3");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("xxxx");
@@ -105,7 +111,13 @@ namespace Generator
             this.mnuMain = new System.Windows.Forms.MainMenu(this.components);
             this.mnuFile = new System.Windows.Forms.MenuItem();
             this.mnuNewProject = new System.Windows.Forms.MenuItem();
+            this.mnuNewProjectDSL = new System.Windows.Forms.MenuItem();
+            this.menuItem3 = new System.Windows.Forms.MenuItem();
+            this.mnuProjectRecentDSL = new System.Windows.Forms.MenuItem();
             this.mnuOpenProject = new System.Windows.Forms.MenuItem();
+            this.mnuOpenProjectFile = new System.Windows.Forms.MenuItem();
+            this.menuItem6 = new System.Windows.Forms.MenuItem();
+            this.mnuOpenProjectRecent = new System.Windows.Forms.MenuItem();
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.mnuOpen = new System.Windows.Forms.MenuItem();
             this.mnuAdd = new System.Windows.Forms.MenuItem();
@@ -136,12 +148,12 @@ namespace Generator
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabWindow = new System.Windows.Forms.TabControl();
             this.tabUserConcepts = new System.Windows.Forms.TabPage();
+            this.lstUserConceptList = new System.Windows.Forms.TreeView();
+            this.conceptfolder = new System.Windows.Forms.ImageList(this.components);
             this.tabCoreConcepts = new System.Windows.Forms.TabPage();
             this.lstCoreConceptList = new System.Windows.Forms.TreeView();
-            this.conceptfolder = new System.Windows.Forms.ImageList(this.components);
             this.tabTemplates = new System.Windows.Forms.TabPage();
             this.lstTemplateList = new System.Windows.Forms.TreeView();
-            this.lstUserConceptList = new System.Windows.Forms.TreeView();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -153,6 +165,7 @@ namespace Generator
             this.toolStripProject = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1.SuspendLayout();
             this.tabWindow.SuspendLayout();
+            this.tabUserConcepts.SuspendLayout();
             this.tabCoreConcepts.SuspendLayout();
             this.tabTemplates.SuspendLayout();
             this.SuspendLayout();
@@ -185,14 +198,54 @@ namespace Generator
             // mnuNewProject
             // 
             this.mnuNewProject.Index = 0;
+            this.mnuNewProject.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.mnuNewProjectDSL,
+            this.menuItem3,
+            this.mnuProjectRecentDSL});
             this.mnuNewProject.Text = "&New Project";
-            this.mnuNewProject.Click += new System.EventHandler(this.mnuNewProject_Click_1);
+            this.mnuNewProject.Select += new System.EventHandler(this.mnuNewProject_Select);
+            // 
+            // mnuNewProjectDSL
+            // 
+            this.mnuNewProjectDSL.Index = 0;
+            this.mnuNewProjectDSL.Text = "Select &DSL...";
+            this.mnuNewProjectDSL.Click += new System.EventHandler(this.mnuNewProjectDSL_Click);
+            // 
+            // menuItem3
+            // 
+            this.menuItem3.Index = 1;
+            this.menuItem3.Text = "-";
+            // 
+            // mnuProjectRecentDSL
+            // 
+            this.mnuProjectRecentDSL.Index = 2;
+            this.mnuProjectRecentDSL.Text = "&Recent DLS\'s";
             // 
             // mnuOpenProject
             // 
             this.mnuOpenProject.Index = 1;
+            this.mnuOpenProject.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.mnuOpenProjectFile,
+            this.menuItem6,
+            this.mnuOpenProjectRecent});
             this.mnuOpenProject.Text = "&Open Project";
-            this.mnuOpenProject.Click += new System.EventHandler(this.mnuOpenProject_Click);
+            this.mnuOpenProject.Select += new System.EventHandler(this.mnuOpenProject_Select);
+            // 
+            // mnuOpenProjectFile
+            // 
+            this.mnuOpenProjectFile.Index = 0;
+            this.mnuOpenProjectFile.Text = "&...";
+            this.mnuOpenProjectFile.Click += new System.EventHandler(this.mnuOpenProjectFile_Click);
+            // 
+            // menuItem6
+            // 
+            this.menuItem6.Index = 1;
+            this.menuItem6.Text = "-";
+            // 
+            // mnuOpenProjectRecent
+            // 
+            this.mnuOpenProjectRecent.Index = 2;
+            this.mnuOpenProjectRecent.Text = "&Recent Projects";
             // 
             // menuItem1
             // 
@@ -430,6 +483,53 @@ namespace Generator
             this.tabUserConcepts.Text = "User";
             this.tabUserConcepts.UseVisualStyleBackColor = true;
             // 
+            // lstUserConceptList
+            // 
+            this.lstUserConceptList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstUserConceptList.FullRowSelect = true;
+            this.lstUserConceptList.HotTracking = true;
+            this.lstUserConceptList.ImageIndex = 0;
+            this.lstUserConceptList.ImageList = this.conceptfolder;
+            this.lstUserConceptList.Indent = 15;
+            this.lstUserConceptList.ItemHeight = 18;
+            this.lstUserConceptList.Location = new System.Drawing.Point(3, 3);
+            this.lstUserConceptList.Name = "lstUserConceptList";
+            treeNode17.Name = "";
+            treeNode17.Text = "Node2";
+            treeNode18.Name = "";
+            treeNode18.Text = "Node3";
+            treeNode19.Name = "";
+            treeNode19.Text = "xxxx";
+            treeNode20.Name = "";
+            treeNode20.Text = "Concepts";
+            treeNode21.Name = "";
+            treeNode21.Text = "Node6";
+            treeNode22.Name = "";
+            treeNode22.Text = "Node7";
+            treeNode23.Name = "";
+            treeNode23.Text = "Node8";
+            treeNode24.Name = "";
+            treeNode24.Text = "Node5ffffff";
+            this.lstUserConceptList.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode20,
+            treeNode24});
+            this.lstUserConceptList.SelectedImageIndex = 0;
+            this.lstUserConceptList.ShowLines = false;
+            this.lstUserConceptList.Size = new System.Drawing.Size(260, 321);
+            this.lstUserConceptList.Sorted = true;
+            this.lstUserConceptList.TabIndex = 9;
+            this.lstUserConceptList.DoubleClick += new System.EventHandler(this.mnuTemplateOpen_Click);
+            // 
+            // conceptfolder
+            // 
+            this.conceptfolder.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("conceptfolder.ImageStream")));
+            this.conceptfolder.TransparentColor = System.Drawing.Color.Red;
+            this.conceptfolder.Images.SetKeyName(0, "explorer_exe_Ico83_ico_Ico1.ico");
+            this.conceptfolder.Images.SetKeyName(1, "cabview_dll_Ico14_ico_Ico1.ico");
+            this.conceptfolder.Images.SetKeyName(2, "shell32_dll_Ico1084_ico_Ico1.ico");
+            this.conceptfolder.Images.SetKeyName(3, "cabview_dll_Ico14_ico_Ico1_New.ico");
+            this.conceptfolder.Images.SetKeyName(4, "cabview_dll_Ico14_ico_Ico1_New.PNG");
+            // 
             // tabCoreConcepts
             // 
             this.tabCoreConcepts.Controls.Add(this.lstCoreConceptList);
@@ -460,16 +560,6 @@ namespace Generator
             this.lstCoreConceptList.TabIndex = 9;
             this.lstCoreConceptList.DoubleClick += new System.EventHandler(this.mnuTemplateOpen_Click);
             // 
-            // conceptfolder
-            // 
-            this.conceptfolder.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("conceptfolder.ImageStream")));
-            this.conceptfolder.TransparentColor = System.Drawing.Color.Red;
-            this.conceptfolder.Images.SetKeyName(0, "explorer_exe_Ico83_ico_Ico1.ico");
-            this.conceptfolder.Images.SetKeyName(1, "cabview_dll_Ico14_ico_Ico1.ico");
-            this.conceptfolder.Images.SetKeyName(2, "shell32_dll_Ico1084_ico_Ico1.ico");
-            this.conceptfolder.Images.SetKeyName(3, "cabview_dll_Ico14_ico_Ico1_New.ico");
-            this.conceptfolder.Images.SetKeyName(4, "cabview_dll_Ico14_ico_Ico1_New.PNG");
-            // 
             // tabTemplates
             // 
             this.tabTemplates.Controls.Add(this.lstTemplateList);
@@ -493,45 +583,6 @@ namespace Generator
             this.lstTemplateList.ItemHeight = 18;
             this.lstTemplateList.Location = new System.Drawing.Point(3, 3);
             this.lstTemplateList.Name = "lstTemplateList";
-            treeNode17.Name = "";
-            treeNode17.Text = "Node2";
-            treeNode18.Name = "";
-            treeNode18.Text = "Node3";
-            treeNode19.Name = "";
-            treeNode19.Text = "xxxx";
-            treeNode20.Name = "";
-            treeNode20.Text = "Concepts";
-            treeNode21.Name = "";
-            treeNode21.Text = "Node6";
-            treeNode22.Name = "";
-            treeNode22.Text = "Node7";
-            treeNode23.Name = "";
-            treeNode23.Text = "Node8";
-            treeNode24.Name = "";
-            treeNode24.Text = "Node5ffffff";
-            this.lstTemplateList.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode20,
-            treeNode24});
-            this.lstTemplateList.SelectedImageIndex = 0;
-            this.lstTemplateList.ShowLines = false;
-            this.lstTemplateList.Size = new System.Drawing.Size(260, 321);
-            this.lstTemplateList.Sorted = true;
-            this.lstTemplateList.StateImageList = this.conceptfolder;
-            this.lstTemplateList.TabIndex = 10;
-            this.lstTemplateList.DoubleClick += new System.EventHandler(this.lstTemplateList_DoubleClick);
-            // 
-            // lstUserConceptList
-            // 
-            this.lstUserConceptList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstUserConceptList.FullRowSelect = true;
-            this.lstUserConceptList.HotTracking = true;
-            this.lstUserConceptList.ImageIndex = 0;
-            this.lstUserConceptList.ImageList = this.conceptfolder;
-            this.lstUserConceptList.Indent = 15;
-            this.lstUserConceptList.ItemHeight = 18;
-            this.lstUserConceptList.LineColor = System.Drawing.Color.Empty;
-            this.lstUserConceptList.Location = new System.Drawing.Point(3, 3);
-            this.lstUserConceptList.Name = "lstUserConceptList";
             treeNode1.Name = "";
             treeNode1.Text = "Node2";
             treeNode2.Name = "";
@@ -548,15 +599,16 @@ namespace Generator
             treeNode7.Text = "Node8";
             treeNode8.Name = "";
             treeNode8.Text = "Node5ffffff";
-            this.lstUserConceptList.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            this.lstTemplateList.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode4,
             treeNode8});
-            this.lstUserConceptList.SelectedImageIndex = 0;
-            this.lstUserConceptList.ShowLines = false;
-            this.lstUserConceptList.Size = new System.Drawing.Size(260, 321);
-            this.lstUserConceptList.Sorted = true;
-            this.lstUserConceptList.TabIndex = 9;
-            this.lstUserConceptList.DoubleClick += new System.EventHandler(this.mnuTemplateOpen_Click);
+            this.lstTemplateList.SelectedImageIndex = 0;
+            this.lstTemplateList.ShowLines = false;
+            this.lstTemplateList.Size = new System.Drawing.Size(260, 321);
+            this.lstTemplateList.Sorted = true;
+            this.lstTemplateList.StateImageList = this.conceptfolder;
+            this.lstTemplateList.TabIndex = 10;
+            this.lstTemplateList.DoubleClick += new System.EventHandler(this.lstTemplateList_DoubleClick);
             // 
             // splitter2
             // 
@@ -653,6 +705,7 @@ namespace Generator
             this.Shown += new System.EventHandler(this.TemplateMain_Shown);
             this.panel1.ResumeLayout(false);
             this.tabWindow.ResumeLayout(false);
+            this.tabUserConcepts.ResumeLayout(false);
             this.tabCoreConcepts.ResumeLayout(false);
             this.tabTemplates.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -799,6 +852,9 @@ namespace Generator
 			mnuSaveCache.Visible					= false;
 			mnuInvent.Visible						= false;
 #endif
+            OptionsSettings.Instance().ValidateLastUsedProjects();
+            OptionsSettings.Instance().ValidateLastUsedSolutions();
+
             InitializeMenus();
 
 			HideOutputText();
@@ -881,6 +937,8 @@ namespace Generator
 		{
             HideOutputText();
 			this.Cursor								= System.Windows.Forms.Cursors.WaitCursor;
+            
+            TemplateCache.Instance().Clear(true);
 
             if (args != null)
             {
@@ -901,6 +959,12 @@ namespace Generator
 
 		private void InitializeMenus()
 		{
+            this.Text = "*** NextGen *** ";
+            if (! String.IsNullOrEmpty(TemplateCache.Instance().SolutionName))
+            {
+                this.Text += $"DSL: {TemplateCache.Instance().SolutionName}, Project: {TemplateCache.Instance().ProjectName}";
+            }
+
             if (lastbuildmenusforsolution != TemplateCache.Instance().Solution)
 			{
 				// Fill the variable parts of the menus.
@@ -947,7 +1011,7 @@ namespace Generator
 		{
             if (lastbuildmenusforproject != TemplateCache.Instance().ProjectDirectory)
 			{
-				BuildConceptList(true);
+				BuildConceptList();
                 lastbuildmenusforproject            = TemplateCache.Instance().ProjectDirectory;
 			}
 			bool						enabled		= (TemplateCache.Instance().ProjectDirectory != "");
@@ -1107,12 +1171,12 @@ namespace Generator
 		}
 
 		/// <summary>
-		/// Build the submenus under the Templates menu. When
+		/// Build the treeviews for userconcepts and baseconcepts. When
 		/// 'project_dir' is set, do those in the projectdirectory
 		/// otherwise do those in the solution subdirectories.
 		/// </summary>
 		/// <param name="project_dir"></param>
-		private void BuildConceptList(bool project_dir)
+		private void BuildConceptList()
 		{
 			lstUserConceptList.Nodes.Clear();
             lstCoreConceptList.Nodes.Clear();
@@ -1123,22 +1187,14 @@ namespace Generator
             // Fill toolstrip texts on project and solution
             string project = TemplateCache.Instance().projectfile;
             string solution = TemplateCache.Instance().SolutionLocation;
-            //if (project == "" && TemplateCache.Instance().TemplatefilesEditable)
-            //{
-            //    project = "Core concepts and Templates";
-            //    this.tabCoreConcepts.Text = "Core Concepts";
-            //} else
-            //{
-            //    this.tabCoreConcepts.Text = "User Concepts";
-            //}
 
             toolStripProject.Text = "Project: " + System.IO.Path.GetFileNameWithoutExtension(project);
             toolStripProject.ToolTipText = project;
             toolStripSolution.Text = "DSL: " + System.IO.Path.GetFileNameWithoutExtension(solution);
             toolStripSolution.ToolTipText = solution;
 
-            string[] usertypes = TemplateCache.Instance().GetViewableTypenamesList(project_dir, !project_dir);
-            string[] coretypes = TemplateCache.Instance().GetViewableTypenamesList(!project_dir, project_dir);
+            string[] usertypes = TemplateCache.Instance().GetViewableTypenamesList(true, false);
+            string[] coretypes = TemplateCache.Instance().GetViewableTypenamesList(false, true);
             ProgressBar.Maximum = usertypes.Length + coretypes.Length;
             ProgressBar.Value = 0;
             ProgressBar.Visible = true;
@@ -1574,11 +1630,10 @@ namespace Generator
 
 			// Treat all files to be opened. We'll have to do the same
 			// as when initial loading with a list of filenames.
-			string[]					files		= new string[1];
-			files[0] = openFileDialog.FileName;
+			string file = openFileDialog.FileName;
 
-            TemplateCache.Instance().Clear(true);
-			InitializeApplication(files);
+//            TemplateCache.Instance().Clear(true);
+			InitializeApplicationForProject(file);
 		}
 
 		private void mnuSaveCache_Click(object sender, System.EventArgs e)
@@ -1629,35 +1684,35 @@ namespace Generator
 			f.ShowDialog(this); */
 		}
 
-		private void _mnuNewProject_Click(object sender, System.EventArgs e)
-		{
-			if (!CloseAllForms(true))
-				return;
+		//private void mnuNewProject_Click(object sender, System.EventArgs e)
+		//{
+		//	if (!CloseAllForms(true))
+		//		return;
 			
-			openFileDialog.Multiselect				= false;
-			openFileDialog.CheckFileExists			= false;
-			openFileDialog.Title					= "Create projectfile";
-			openFileDialog.DefaultExt				= ".xmp";
-			openFileDialog.Filter					= "NextGen projects	(*.xmp)|*.xmp";
-			if (openFileDialog.ShowDialog(this) != DialogResult.OK)
-				return;
+		//	openFileDialog.Multiselect				= false;
+		//	openFileDialog.CheckFileExists			= false;
+		//	openFileDialog.Title					= "Create projectfile";
+		//	openFileDialog.DefaultExt				= ".xmp";
+		//	openFileDialog.Filter					= "NextGen projects	(*.xmp)|*.xmp";
+		//	if (openFileDialog.ShowDialog(this) != DialogResult.OK)
+		//		return;
 
-			// Treat all files to be opened. We'll have to do the same
-			// as when initial loading with a list of filenames.
-			string						file		= openFileDialog.FileName;
-			XmlDocument					d			= new XmlDocument();
-			d.AppendChild(d.CreateElement("project"));
-			XmlElement					elm			= d.CreateElement("solution");
-            elm.AppendChild(d.CreateTextNode(TemplateCache.Instance().Solution));
-			d.DocumentElement.AppendChild(elm);
-			elm										= d.CreateElement("solutionfilename");
-            elm.AppendChild(d.CreateTextNode(TemplateCache.Instance().SolutionFilename));
-			d.DocumentElement.AppendChild(elm);
-			d.Save(file);
-			string[]					args		= new string[1];
-			args[0] = file;
-			InitializeApplication(args);
-		}
+		//	// Treat all files to be opened. We'll have to do the same
+		//	// as when initial loading with a list of filenames.
+		//	string						file		= openFileDialog.FileName;
+		//	XmlDocument					d			= new XmlDocument();
+		//	d.AppendChild(d.CreateElement("project"));
+		//	XmlElement					elm			= d.CreateElement("solution");
+  //          elm.AppendChild(d.CreateTextNode(TemplateCache.Instance().Solution));
+		//	d.DocumentElement.AppendChild(elm);
+		//	elm										= d.CreateElement("solutionfilename");
+  //          elm.AppendChild(d.CreateTextNode(TemplateCache.Instance().SolutionFilename));
+		//	d.DocumentElement.AppendChild(elm);
+		//	d.Save(file);
+		//	string[]					args		= new string[1];
+		//	args[0] = file;
+		//	InitializeApplication(args);
+		//}
 
 
 		private void btnOutputClose_Click(object sender, System.EventArgs e)
@@ -1869,28 +1924,28 @@ namespace Generator
             }
 
             firstload = false;
-
-            NewOpenProject nop = new NewOpenProject();
-            nop.ShowDialog(this);
-        }
-
-        private void mnuNewProject_Click_1(object sender, EventArgs e)
-        {
-            if (!CloseAllForms(true))
-                return;
-
-            NewOpenProject nop = new NewOpenProject(true);
-            nop.ShowDialog(this);
-        }
-
-        private void mnuOpenProject_Click(object sender, EventArgs e)
-        {
-            if (!CloseAllForms(true))
-                return;
             
-            NewOpenProject nop = new NewOpenProject(false);
-            nop.ShowDialog(this);
+        //    NewOpenProject nop = new NewOpenProject();
+        //    nop.ShowDialog(this);
         }
+
+        //private void mnuNewProject_Click_1(object sender, EventArgs e)
+        //{
+        //    if (!CloseAllForms(true))
+        //        return;
+
+        //    NewOpenProject nop = new NewOpenProject(true);
+        //    nop.ShowDialog(this);
+        //}
+
+        //private void mnuOpenProject_Click(object sender, EventArgs e)
+        //{
+        //    if (!CloseAllForms(true))
+        //        return;
+            
+        //    NewOpenProject nop = new NewOpenProject(false);
+        //    nop.ShowDialog(this);
+        //}
 
         private static int __linenrtofind;
         private static bool IsOnLine(LinkInfo li)
@@ -2133,7 +2188,182 @@ namespace Generator
             tf.Show();
 
         }
+
+        private void mnuOpenProjectFile_Click(object sender, EventArgs e)
+        {
+            string initialFolder = OptionsSettings.Instance().GetLastUsedProjectFolder();
+            if ("" != initialFolder)
+            {
+                openFileDialog.InitialDirectory = initialFolder;
+            }
+            openFileDialog.Multiselect = false;
+            openFileDialog.CheckFileExists = true;
+            openFileDialog.Title = "Open projectfile";
+            openFileDialog.DefaultExt = ".xmp";
+            openFileDialog.Filter = "NextGen projects (*.xmp)|*.xmp";
+            openFileDialog.RestoreDirectory = false;
+            openFileDialog.FileName = "";
+            if (openFileDialog.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            string file = openFileDialog.FileName;
+
+            // Save the last used project path
+            string filePath = Path.GetDirectoryName(file);
+            string parentPath = Path.GetDirectoryName(filePath);
+            OptionsSettings.Instance().SetLastUsedProjectFolder(parentPath);
+
+            InitializeApplicationForProject(file);
+        }
+
+        /// <summary>
+        /// eerst de DSL opzoeken, en daarna een locatie voor het project
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mnuNewProjectDSL_Click(object sender, EventArgs e)
+        {
+            string initialFolder = OptionsSettings.Instance().GetLastUsedSolutionFolder();
+            if ("" != initialFolder)
+            {
+                openFileDialog.InitialDirectory = initialFolder;
+            }
+            openFileDialog.Multiselect = false;
+            openFileDialog.CheckFileExists = true;
+            openFileDialog.Title = "Select DSL file";
+            openFileDialog.DefaultExt = ".xms";
+            openFileDialog.Filter = "NextGen DSL (*.xms)|*.xms";
+            openFileDialog.RestoreDirectory = false;
+            openFileDialog.FileName = "";
+            if (openFileDialog.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            string file = openFileDialog.FileName;
+
+            // Save the last used solution path
+            string filePath = Path.GetDirectoryName(file);
+            string parentPath = Path.GetDirectoryName(filePath);
+            OptionsSettings.Instance().SetLastUsedSolutionFolder(parentPath);
+
+            if (InitializeApplicationForSolution(file))
+            {
+                this.NewProjectForCurrentSolution();
+            }
+        }
+
+        public void NewProjectForCurrentSolution()
+        {
+            string initialFolder = OptionsSettings.Instance().GetLastUsedProjectFolder();
+            if ("" != initialFolder)
+            {
+                openFileDialog.InitialDirectory = initialFolder;
+            }
+
+            openFileDialog.Multiselect = false;
+            openFileDialog.CheckFileExists = false;
+            openFileDialog.Title = $"Create projectfile for DSL '{TemplateCache.Instance().Solution}'";
+            openFileDialog.DefaultExt = ".xmp";
+            openFileDialog.Filter = "NextGen projects (*.xmp)|*.xmp";
+            openFileDialog.RestoreDirectory = false;
+            openFileDialog.FileName = "";
+            if (openFileDialog.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            // Treat all files to be opened. We'll have to do the same
+            // as when initial loading with a list of filenames.
+            string file = openFileDialog.FileName;
+            XmlDocument d = new XmlDocument();
+            d.AppendChild(d.CreateElement("project"));
+            XmlElement elm = d.CreateElement("solution");
+            elm.AppendChild(d.CreateTextNode(TemplateCache.Instance().Solution));
+            d.DocumentElement.AppendChild(elm);
+            elm = d.CreateElement("solutionfilename");
+            elm.AppendChild(d.CreateTextNode(TemplateCache.Instance().SolutionFilename));
+            d.DocumentElement.AppendChild(elm);
+            d.Save(file);
+
+            InitializeApplicationForProject(file);
+        }
+
+        private bool InitializeApplicationForProject(string file)
+        {
+            string[] args = new string[] { file };
+            try
+            {
+                InitializeApplication(args);
+                return true;
+            }
+            catch (ApplicationException aex)
+            {
+                OptionsSettings.Instance().UnRegisterLastUsedProject(file);
+                MessageBox.Show(aex.Message, "Invalid project file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool InitializeApplicationForSolution(string file)
+        {
+            string[] args = new string[] { file };
+            try
+            {
+                InitializeApplication(args);
+                return true;
+            }
+            catch (ApplicationException aex)
+            {
+                OptionsSettings.Instance().UnRegisterLastUsedSolution(file);
+                MessageBox.Show(aex.Message, "Invalid solution file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private void mnuNewProjectForRecentDSL(object sender, EventArgs e)
+        {
+            string file = ((MenuItem)sender).Text;
+            if (InitializeApplicationForSolution(file))
+            {
+                this.NewProjectForCurrentSolution();
+            }
+        }
+
+        private void mnuRecentProject(object sender, EventArgs e)
+        {
+            string file = ((MenuItem)sender).Text;
+            this.InitializeApplicationForProject(file);
+        }
+
+        private void mnuNewProject_Select(object sender, EventArgs e)
+        {
+            // Oud spul verwijderen
+            for (int i = this.mnuNewProject.MenuItems.Count - 1; i > 1; i--)
+            {
+                this.mnuNewProject.MenuItems.RemoveAt(i);
+            }
+            // Nieuwe Recent list aanleggen
+            foreach (String solution in OptionsSettings.Instance().GetLastUsedSolutions())
+            {
+                MenuItem mi = new MenuItem(solution, new EventHandler(this.mnuNewProjectForRecentDSL));
+                this.mnuNewProject.MenuItems.Add(mi);
+            }
+        }
+
+        private void mnuOpenProject_Select(object sender, EventArgs e)
+        {
+            // Oud spul verwijderen
+            for (int i = this.mnuOpenProject.MenuItems.Count - 1; i > 1; i--)
+            {
+                this.mnuOpenProject.MenuItems.RemoveAt(i);
+            }
+            // Nieuwe Recent list aanleggen
+            foreach (String project in OptionsSettings.Instance().GetLastUsedProjects())
+            {
+                MenuItem mi = new MenuItem(project, new EventHandler(this.mnuRecentProject));
+                this.mnuOpenProject.MenuItems.Add(mi);
+            }
+
+        }
     }
+
     public enum LinkInfoType
     {
         Templatefile,

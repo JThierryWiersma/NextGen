@@ -226,10 +226,6 @@ namespace Generator.Utility
                 {
                     this.UnRegisterLastUsedSolution(file);
                 }
-                else
-                {
-                    this.RegisterFor(LRU_SOLUTION, file);
-                }
             }
         }
         public void ValidateLastUsedProjects()
@@ -239,10 +235,6 @@ namespace Generator.Utility
                 if (!File.Exists(file))
                 {
                     this.UnRegisterLastUsedProject(file);
-                }
-                else
-                {
-                    this.RegisterFor(LRU_PROJECT, file);
                 }
             }
         }

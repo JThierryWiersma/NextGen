@@ -41,6 +41,9 @@ namespace Generator
         private MenuItem mnuOpenProjectFile;
         private MenuItem menuItem6;
         private MenuItem mnuOpenProjectRecent;
+        private ContextMenuStrip conceptContextMenu;
+        private ToolStripMenuItem newConceptMenuItem;
+        private ToolStripMenuItem removeConceptMenuItem;
         private bool firstload = true;
 		public TemplateMain()
 		{
@@ -79,21 +82,6 @@ namespace Generator
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Node2");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Node3");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("xxxx");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Concepts", new System.Windows.Forms.TreeNode[] {
-            treeNode17,
-            treeNode18,
-            treeNode19});
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Node6");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Node7");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Node8");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Node5ffffff", new System.Windows.Forms.TreeNode[] {
-            treeNode21,
-            treeNode22,
-            treeNode23});
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateMain));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node2");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node3");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("xxxx");
@@ -108,6 +96,21 @@ namespace Generator
             treeNode5,
             treeNode6,
             treeNode7});
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TemplateMain));
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Node2");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Node3");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("xxxx");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Concepts", new System.Windows.Forms.TreeNode[] {
+            treeNode9,
+            treeNode10,
+            treeNode11});
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Node6");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Node7");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Node8");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Node5ffffff", new System.Windows.Forms.TreeNode[] {
+            treeNode13,
+            treeNode14,
+            treeNode15});
             this.mnuMain = new System.Windows.Forms.MainMenu(this.components);
             this.mnuFile = new System.Windows.Forms.MenuItem();
             this.mnuNewProject = new System.Windows.Forms.MenuItem();
@@ -149,6 +152,9 @@ namespace Generator
             this.tabWindow = new System.Windows.Forms.TabControl();
             this.tabUserConcepts = new System.Windows.Forms.TabPage();
             this.lstUserConceptList = new System.Windows.Forms.TreeView();
+            this.conceptContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.newConceptMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeConceptMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conceptfolder = new System.Windows.Forms.ImageList(this.components);
             this.tabCoreConcepts = new System.Windows.Forms.TabPage();
             this.lstCoreConceptList = new System.Windows.Forms.TreeView();
@@ -166,6 +172,7 @@ namespace Generator
             this.panel1.SuspendLayout();
             this.tabWindow.SuspendLayout();
             this.tabUserConcepts.SuspendLayout();
+            this.conceptContextMenu.SuspendLayout();
             this.tabCoreConcepts.SuspendLayout();
             this.tabTemplates.SuspendLayout();
             this.SuspendLayout();
@@ -487,6 +494,7 @@ namespace Generator
             // 
             this.lstUserConceptList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstUserConceptList.FullRowSelect = true;
+            this.lstUserConceptList.HideSelection = false;
             this.lstUserConceptList.HotTracking = true;
             this.lstUserConceptList.ImageIndex = 0;
             this.lstUserConceptList.ImageList = this.conceptfolder;
@@ -494,31 +502,56 @@ namespace Generator
             this.lstUserConceptList.ItemHeight = 18;
             this.lstUserConceptList.Location = new System.Drawing.Point(3, 3);
             this.lstUserConceptList.Name = "lstUserConceptList";
-            treeNode17.Name = "";
-            treeNode17.Text = "Node2";
-            treeNode18.Name = "";
-            treeNode18.Text = "Node3";
-            treeNode19.Name = "";
-            treeNode19.Text = "xxxx";
-            treeNode20.Name = "";
-            treeNode20.Text = "Concepts";
-            treeNode21.Name = "";
-            treeNode21.Text = "Node6";
-            treeNode22.Name = "";
-            treeNode22.Text = "Node7";
-            treeNode23.Name = "";
-            treeNode23.Text = "Node8";
-            treeNode24.Name = "";
-            treeNode24.Text = "Node5ffffff";
+            treeNode1.Name = "";
+            treeNode1.Text = "Node2";
+            treeNode2.Name = "";
+            treeNode2.Text = "Node3";
+            treeNode3.Name = "";
+            treeNode3.Text = "xxxx";
+            treeNode4.Name = "";
+            treeNode4.Text = "Concepts";
+            treeNode5.Name = "";
+            treeNode5.Text = "Node6";
+            treeNode6.Name = "";
+            treeNode6.Text = "Node7";
+            treeNode7.Name = "";
+            treeNode7.Text = "Node8";
+            treeNode8.Name = "";
+            treeNode8.Text = "Node5ffffff";
             this.lstUserConceptList.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode20,
-            treeNode24});
+            treeNode4,
+            treeNode8});
             this.lstUserConceptList.SelectedImageIndex = 0;
             this.lstUserConceptList.ShowLines = false;
             this.lstUserConceptList.Size = new System.Drawing.Size(260, 321);
             this.lstUserConceptList.Sorted = true;
             this.lstUserConceptList.TabIndex = 9;
             this.lstUserConceptList.DoubleClick += new System.EventHandler(this.mnuTemplateOpen_Click);
+            // 
+            // conceptContextMenu
+            // 
+            this.conceptContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newConceptMenuItem,
+            this.removeConceptMenuItem});
+            this.conceptContextMenu.Name = "conceptContextMenu";
+            this.conceptContextMenu.ShowImageMargin = false;
+            this.conceptContextMenu.Size = new System.Drawing.Size(134, 48);
+            // 
+            // newConceptMenuItem
+            // 
+            this.newConceptMenuItem.Name = "newConceptMenuItem";
+            this.newConceptMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newConceptMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.newConceptMenuItem.Text = "New";
+            this.newConceptMenuItem.Click += new System.EventHandler(this.newConceptMenuItem_Click);
+            // 
+            // removeConceptMenuItem
+            // 
+            this.removeConceptMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.removeConceptMenuItem.Name = "removeConceptMenuItem";
+            this.removeConceptMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.removeConceptMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.removeConceptMenuItem.Text = "Remove";
             // 
             // conceptfolder
             // 
@@ -583,25 +616,25 @@ namespace Generator
             this.lstTemplateList.ItemHeight = 18;
             this.lstTemplateList.Location = new System.Drawing.Point(3, 3);
             this.lstTemplateList.Name = "lstTemplateList";
-            treeNode1.Name = "";
-            treeNode1.Text = "Node2";
-            treeNode2.Name = "";
-            treeNode2.Text = "Node3";
-            treeNode3.Name = "";
-            treeNode3.Text = "xxxx";
-            treeNode4.Name = "";
-            treeNode4.Text = "Concepts";
-            treeNode5.Name = "";
-            treeNode5.Text = "Node6";
-            treeNode6.Name = "";
-            treeNode6.Text = "Node7";
-            treeNode7.Name = "";
-            treeNode7.Text = "Node8";
-            treeNode8.Name = "";
-            treeNode8.Text = "Node5ffffff";
+            treeNode9.Name = "";
+            treeNode9.Text = "Node2";
+            treeNode10.Name = "";
+            treeNode10.Text = "Node3";
+            treeNode11.Name = "";
+            treeNode11.Text = "xxxx";
+            treeNode12.Name = "";
+            treeNode12.Text = "Concepts";
+            treeNode13.Name = "";
+            treeNode13.Text = "Node6";
+            treeNode14.Name = "";
+            treeNode14.Text = "Node7";
+            treeNode15.Name = "";
+            treeNode15.Text = "Node8";
+            treeNode16.Name = "";
+            treeNode16.Text = "Node5ffffff";
             this.lstTemplateList.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode8});
+            treeNode12,
+            treeNode16});
             this.lstTemplateList.SelectedImageIndex = 0;
             this.lstTemplateList.ShowLines = false;
             this.lstTemplateList.Size = new System.Drawing.Size(260, 321);
@@ -706,6 +739,7 @@ namespace Generator
             this.panel1.ResumeLayout(false);
             this.tabWindow.ResumeLayout(false);
             this.tabUserConcepts.ResumeLayout(false);
+            this.conceptContextMenu.ResumeLayout(false);
             this.tabCoreConcepts.ResumeLayout(false);
             this.tabTemplates.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -2360,6 +2394,11 @@ namespace Generator
                 MenuItem mi = new MenuItem(project, new EventHandler(this.mnuRecentProject));
                 this.mnuOpenProject.MenuItems.Add(mi);
             }
+
+        }
+
+        private void newConceptMenuItem_Click(object sender, EventArgs e)
+        {
 
         }
     }
